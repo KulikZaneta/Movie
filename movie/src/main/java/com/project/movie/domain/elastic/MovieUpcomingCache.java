@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Document(type = "movieUpcoming", indexName = "movieUpcoming")
+@Document(type = "movie_upcoming", indexName = "movie_upcoming")
 public class MovieUpcomingCache {
     @Id
     private String id;

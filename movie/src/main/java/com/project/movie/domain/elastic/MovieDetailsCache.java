@@ -1,13 +1,14 @@
 package com.project.movie.domain.elastic;
 
+import com.project.movie.domain.jpa.Country;
+import com.project.movie.domain.jpa.Genre;
+import com.project.movie.domain.jpa.Language;
+import com.project.movie.domain.jpa.ProductionCompany;
 import com.project.movie.domain.rest.GenresRest;
 import com.project.movie.domain.rest.ProductionCompaniesRest;
 import com.project.movie.domain.rest.ProductionCountriesRest;
 import com.project.movie.domain.rest.SpokenLanguageRest;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.Id;
@@ -18,20 +19,22 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Document(type = "movieDetails", indexName = "movieDetails")
+@Builder
+@Document(type = "movie_details", indexName = "movie_details")
 public class MovieDetailsCache {
     private Boolean adult;
-    private List<GenresRest> genres;
+    private List<Genre> genres;
     @Id
     private String id;
     private String original_language;
     private String original_title;
     private Double popularity;
-    private List<ProductionCompaniesRest> productionCompanyRests;
-    private List<ProductionCountriesRest> productionCountryRests;
+    private List<ProductionCompany> productionCompanyRests;
+    private List<Country> productionCountryRests;
     private LocalDate release_date;
     private Double runtime;
-    private List<SpokenLanguageRest> spokenLanguageRests;
+    private List<Language> spokenLanguageRests;
     private String title;
     private Long vote_average;
+    private Long restMovieId;
 }

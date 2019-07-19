@@ -44,4 +44,5 @@ public class MovieDetails {
     private Long vote_average;
     @OneToOne(mappedBy = "movieDetails", orphanRemoval = true)
     private Movie movie;
+    private Long restMovieId;
 }

@@ -1,11 +1,13 @@
 package com.project.movie.service;
 
 import com.project.movie.domain.elastic.MovieCache;
+import com.project.movie.domain.elastic.MovieDetailsCache;
 import com.project.movie.domain.jpa.Movie;
 import com.project.movie.domain.rest.MovieListRest;
 import com.project.movie.domain.rest.MovieRest;
 import com.project.movie.mapper.MovieMapper;
 import com.project.movie.repository.elastic.MovieCacheRepository;
+import com.project.movie.repository.elastic.MovieDetailsCacheRepository;
 import com.project.movie.repository.jpa.MovieRepostitory;
 import com.project.movie.repository.rest.MovieDbRestRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +53,6 @@ public class MovieService {
     }
 
 
-
     @Transactional
     public void saveIntoDb(List<MovieRest> items) {
         movieMapper.mapToMovieList(items).stream()
@@ -69,6 +70,5 @@ public class MovieService {
         }).filter(Objects::nonNull)
         .collect(Collectors.toList());
     }
-
 
 }
