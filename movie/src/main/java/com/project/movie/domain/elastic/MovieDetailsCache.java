@@ -31,7 +31,7 @@ public class MovieDetailsCache {
     private Double popularity;
     private List<ProductionCompany> productionCompanyRests;
     private List<Country> productionCountryRests;
-    private LocalDate release_date;
+    private String release_date;
     private Double runtime;
     private List<Language> spokenLanguageRests;
     private String title;

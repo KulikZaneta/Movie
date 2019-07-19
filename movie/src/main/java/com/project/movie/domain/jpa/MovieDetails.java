@@ -1,9 +1,5 @@
 package com.project.movie.domain.jpa;
 
-import com.project.movie.domain.rest.GenresRest;
-import com.project.movie.domain.rest.ProductionCompaniesRest;
-import com.project.movie.domain.rest.ProductionCountriesRest;
-import com.project.movie.domain.rest.SpokenLanguageRest;
 import lombok.*;
 
 import javax.persistence.*;
@@ -42,7 +38,7 @@ public class MovieDetails {
     private List<Language> spokenLanguageRests = new LinkedList<>();
     private String title;
     private Long vote_average;
-    @OneToOne(mappedBy = "movieDetails", orphanRemoval = true)
+    @OneToOne(mappedBy = "movieDetails", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, optional = false)
     private Movie movie;
     private Long restMovieId;
 }

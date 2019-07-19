@@ -23,7 +23,7 @@ public class Movie {
     private Double popularity;
     @Column(unique = true)
     private Long restId;
-    @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "movie_details_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "movie_details_id", referencedColumnName = "id")
     private MovieDetails movieDetails;
 }

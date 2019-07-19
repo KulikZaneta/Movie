@@ -38,7 +38,7 @@ public class MovieMapper {
         return MovieCache.builder()
                 .originalLanguage(movie.getOriginalLanguage())
                 .popularity(movie.getPopularity())
-                .releaseDate(movie.getReleaseDate())
+                .releaseDate(movie.getReleaseDate().toString())
                 .restId(movie.getId())
                 .title(movie.getTitle())
                 .build();

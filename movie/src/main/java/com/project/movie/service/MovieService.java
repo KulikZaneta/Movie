@@ -55,20 +55,20 @@ public class MovieService {
 
     @Transactional
     public void saveIntoDb(List<MovieRest> items) {
-        movieMapper.mapToMovieList(items).stream()
-        .map(movie -> {
-        //    try {
-                Movie moviesSave = movieRepostitory.save(movie);
-                movieCacheRepository.save(movieMapper.mapToMovieCache(moviesSave));
-                applicationEventPublisher.publishEvent(moviesSave);
-                return moviesSave;
+        movieMapper.mapToMovieList(items).forEach(
+                movie -> {
+                    MovieCache movieCache = movieCacheRepository.findByTitle(movie.getTitle());
+                    if (movieCache == null) {
+                        Movie movieDb = movieRepostitory.findByTitle(movie.getTitle());
+                        if (movieDb == null) {
+                            Movie moviesSave = movieRepostitory.save(movie);
+                            movieCacheRepository.save(movieMapper.mapToMovieCache(moviesSave));
+                        } else {
+                            movieCacheRepository.save(movieMapper.mapToMovieCache(movieDb));
+                        }
+                    }
+        });
 
-            //} catch (Exception e) {
-              //  log.error(e.getMessage(), e);
-          //  }
-           // return null;
-        }).filter(Objects::nonNull)
-        .collect(Collectors.toList());
     }
 
 }

@@ -5,5 +5,6 @@ import com.project.movie.domain.elastic.MovieCache;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 public interface MovieCacheRepository extends ElasticsearchRepository<MovieCache, String> {
+    MovieCache findByTitle(String title);
 
 }

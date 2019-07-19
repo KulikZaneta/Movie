@@ -20,7 +20,7 @@ public class MovieUpcomingCache {
     @Id
     private String id;
     private String page;
-    private LocalDate maximum;
-    private LocalDate minimum;
+    private String maximum;
+    private String minimum;
 
 }

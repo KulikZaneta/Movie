@@ -21,7 +21,7 @@ public class MovieDetailsMapper {
                 .popularity(movieDetails.getPopularity())
                 .productionCompanyRests(movieDetails.getProductionCompanyRests())
                 .productionCountryRests(movieDetails.getProductionCountryRests())
-                .release_date(movieDetails.getRelease_date())
+                .release_date(String.valueOf(movieDetails.getRelease_date()))
                 .restMovieId(movieDetails.getRestMovieId())
                 .runtime(movieDetails.getRuntime())
                 .spokenLanguageRests(movieDetails.getSpokenLanguageRests())

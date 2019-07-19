@@ -18,7 +18,7 @@ public class MovieCache {
     private String id;
     private String title;
     private String originalLanguage;
-    private LocalDate releaseDate;
+    private String releaseDate;
     private Double popularity;
     private Long restId;
 }
