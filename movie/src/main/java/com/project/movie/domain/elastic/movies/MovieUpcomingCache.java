@@ -1,4 +1,4 @@
-package com.project.movie.domain.elastic;
+package com.project.movie.domain.elastic.movies;
 
 
 import lombok.AllArgsConstructor;
@@ -19,7 +19,6 @@ import java.time.LocalDate;
 public class MovieUpcomingCache {
     @Id
     private String id;
-    private String page;
     private String maximum;
     private String minimum;
 

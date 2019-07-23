@@ -1,27 +1,23 @@
 package com.project.movie.service;
 
 import com.project.movie.domain.elastic.MovieCache;
-import com.project.movie.domain.elastic.MovieDetailsCache;
 import com.project.movie.domain.jpa.Movie;
-import com.project.movie.domain.rest.MovieListRest;
-import com.project.movie.domain.rest.MovieRest;
+import com.project.movie.domain.rest.movieLists.MovieListRest;
+import com.project.movie.domain.rest.movieLists.MovieRest;
+import com.project.movie.domain.rest.movies.MovieUpcomingRest;
 import com.project.movie.mapper.MovieMapper;
 import com.project.movie.repository.elastic.MovieCacheRepository;
-import com.project.movie.repository.elastic.MovieDetailsCacheRepository;
 import com.project.movie.repository.jpa.MovieRepostitory;
 import com.project.movie.repository.rest.MovieDbRestRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -41,8 +37,8 @@ public class MovieService {
     @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
 
-    public MovieListRest getList(){
-        MovieListRest movieList = movieDbRestRepository.getMovieList();
+    public MovieListRest getList(String listId){
+        MovieListRest movieList = movieDbRestRepository.getMovieList(listId);
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(() -> saveIntoDb(movieList.getItems()));
         return movieList;
@@ -69,6 +65,10 @@ public class MovieService {
                     }
         });
 
+    }
+
+    public MovieUpcomingRest getMovieUpcoming() {
+        return movieDbRestRepository.getMovieUpcoming();
     }
 
 }

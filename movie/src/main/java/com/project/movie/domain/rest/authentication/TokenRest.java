@@ -1,4 +1,4 @@
-package com.project.movie.domain.rest;
+package com.project.movie.domain.rest.authentication;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -9,11 +9,10 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProductionCompaniesRest {
-    private String name;
-    private Long id;
-    private String logo_path;
-    private String origin_country;
+@ToString
+public class TokenRest {
+    private Boolean success;
+    private String expires_at;
+    private String request_token;
 }

@@ -1,13 +1,14 @@
 package com.project.movie.repository.rest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.movie.domain.rest.MovieDetailsRest;
+
+import com.project.movie.domain.rest.movies.KeywordRest;
+import com.project.movie.domain.rest.movies.MovieDetailsRest;
+import com.project.movie.domain.rest.movies.SocialMediaRest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 
 @Repository
 @Slf4j
@@ -15,14 +16,19 @@ public class MovieDbDetailsRestRepository {
     @Value("${url.movieDb}")
     private String movieDb;
 
+    @Value("${movie.api.key}")
+    private String apiKey;
+
+    //movieDbRepository
     public MovieDetailsRest getMovieDetails(Long restMovieId) {
-        String response = new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "?api_key=a5719ed0a0498b8e7389f828419d49b2&language=en-US"),String.class);
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            return objectMapper.readValue(response, MovieDetailsRest.class);
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        }
-        return null;
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "?" + apiKey + "&language=en-US"),MovieDetailsRest.class);
+    }
+
+    public SocialMediaRest getSocialMedia(Long restMovieId) {
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/external_ids?" + apiKey),SocialMediaRest.class);
+    }
+
+    public KeywordRest getKeywords(Long restMovieId) {
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/keywords?" + apiKey),KeywordRest.class);
     }
 }

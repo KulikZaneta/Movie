@@ -2,7 +2,10 @@ package com.project.movie.service;
 
 import com.project.movie.domain.elastic.MovieDetailsCache;
 import com.project.movie.domain.jpa.MovieDetails;
-import com.project.movie.domain.rest.MovieDetailsRest;
+import com.project.movie.domain.rest.movies.KeywordRest;
+import com.project.movie.domain.rest.movies.MovieDetailsRest;
+import com.project.movie.domain.rest.movies.MovieUpcomingRest;
+import com.project.movie.domain.rest.movies.SocialMediaRest;
 import com.project.movie.mapper.MovieDetailsMapper;
 import com.project.movie.repository.elastic.MovieDetailsCacheRepository;
 import com.project.movie.repository.jpa.MovieDetailsRepository;
@@ -41,6 +44,14 @@ public class MovieDetailsService {
                 return movieDetailsCacheRepository.save(movieDetailsMapper.mapToMovieDetailsCache(movieDbDetails));
             }
         }
+    }
+
+    public SocialMediaRest getSocialMedia(Long restMovieId) {
+        return movieDbDetailsRestRepository.getSocialMedia(restMovieId);
+    }
+
+    public KeywordRest getKeywords(Long restMovieId) {
+        return movieDbDetailsRestRepository.getKeywords(restMovieId);
     }
 
 }

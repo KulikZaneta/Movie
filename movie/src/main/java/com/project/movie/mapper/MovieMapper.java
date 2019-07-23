@@ -2,8 +2,7 @@ package com.project.movie.mapper;
 
 import com.project.movie.domain.elastic.MovieCache;
 import com.project.movie.domain.jpa.Movie;
-import com.project.movie.domain.rest.MovieRest;
-import org.apache.tomcat.jni.Local;
+import com.project.movie.domain.rest.movieLists.MovieRest;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;

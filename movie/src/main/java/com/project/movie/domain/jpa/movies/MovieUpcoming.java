@@ -1,4 +1,4 @@
-package com.project.movie.domain.jpa;
+package com.project.movie.domain.jpa.movies;
 
 import lombok.*;
 
@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class MovieUpcoming {
     @Id
     @GeneratedValue
-    private Long page;
+    private Long id;
     private LocalDate maximum;
     private LocalDate minimum;
 

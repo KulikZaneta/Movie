@@ -1,7 +1,7 @@
 #DATABASE CONFIGURATION
 spring:
   datasource:
-    url: jdbc:h2:file:~/exam1;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:file:~/exam2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password:
   jpa:
@@ -28,7 +28,7 @@ url:
 
 movie:
   api:
-    key: "a5719ed0a0498b8e7389f828419d49b2"
+    key: a5719ed0a0498b8e7389f828419d49b2
 
 logging:
   level:
