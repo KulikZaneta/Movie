@@ -1,7 +1,8 @@
 package com.project.movie.controller;
 
-import com.project.movie.domain.elastic.MovieCache;
+import com.project.movie.domain.elastic.movies.MovieCache;
 import com.project.movie.domain.rest.movieLists.MovieListRest;
+import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
 import com.project.movie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +23,14 @@ public class MovieDbController {
         return movieService.getList(listId);
     }
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public MovieCache getMovie(@PathVariable String id) {
         return movieService.getMovie(id);
+    }*/
+
+    @GetMapping()
+    public MovieUpcomingRest getMovieUpcoming() {
+        return movieService.getMovieUpcoming();
     }
 }
 

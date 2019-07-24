@@ -1,7 +1,9 @@
 package com.project.movie.controller;
 
-import com.project.movie.domain.elastic.MovieDetailsCache;
+import com.project.movie.domain.elastic.movies.MovieDetailsCache;
 import com.project.movie.domain.rest.movies.KeywordRest;
+import com.project.movie.domain.rest.movies.RelaseDateRest;
+import com.project.movie.domain.rest.movies.ReviewsRest;
 import com.project.movie.domain.rest.movies.SocialMediaRest;
 import com.project.movie.service.MovieDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,16 @@ public class MovieDetailsController {
     @GetMapping("/keywords/{restMovieId}")
     public KeywordRest getKeywords(@PathVariable Long restMovieId) {
         return movieDetailsService.getKeywords(restMovieId);
+    }
+
+    @GetMapping("/relase-dates/{restMovieId}")
+    public RelaseDateRest getRelaseDate(@PathVariable Long restMovieId) {
+        return movieDetailsService.getRelaseDate(restMovieId);
+    }
+
+    @GetMapping("/reviews/{restMovieId}")
+    public ReviewsRest getReviews(@PathVariable Long restMovieId) {
+        return movieDetailsService.getReviews(restMovieId);
     }
 
     @GetMapping("/{id}")

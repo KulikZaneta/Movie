@@ -1,4 +1,4 @@
-package com.project.movie.domain.elastic.movies;
+package com.project.movie.domain.elastic.movieLists;
 
 
 import lombok.AllArgsConstructor;

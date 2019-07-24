@@ -1,4 +1,4 @@
-package com.project.movie.domain.rest.movies;
+package com.project.movie.domain.rest.movieLists;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

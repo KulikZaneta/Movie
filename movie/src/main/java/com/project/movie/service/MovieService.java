@@ -1,10 +1,10 @@
 package com.project.movie.service;
 
-import com.project.movie.domain.elastic.MovieCache;
-import com.project.movie.domain.jpa.Movie;
+import com.project.movie.domain.elastic.movies.MovieCache;
+import com.project.movie.domain.jpa.movies.Movie;
 import com.project.movie.domain.rest.movieLists.MovieListRest;
-import com.project.movie.domain.rest.movieLists.MovieRest;
-import com.project.movie.domain.rest.movies.MovieUpcomingRest;
+import com.project.movie.domain.rest.movies.MovieRest;
+import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
 import com.project.movie.mapper.MovieMapper;
 import com.project.movie.repository.elastic.MovieCacheRepository;
 import com.project.movie.repository.jpa.MovieRepostitory;
@@ -44,9 +44,9 @@ public class MovieService {
         return movieList;
     }
 
-    public MovieCache getMovie(String id) {
+    /*public MovieCache getMovie(String id) {
         return movieCacheRepository.findById(id).orElseThrow(null);
-    }
+    }*/
 
 
     @Transactional

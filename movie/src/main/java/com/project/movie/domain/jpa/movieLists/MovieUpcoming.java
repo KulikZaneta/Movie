@@ -1,4 +1,4 @@
-package com.project.movie.domain.jpa;
+package com.project.movie.domain.jpa.movieLists;
 
 import lombok.*;
 
@@ -6,17 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@NoArgsConstructor
 @Builder
+@ToString
 @Table
 @Entity
-public class Genre {
+public class MovieUpcoming {
     @Id
     @GeneratedValue
     private Long id;
-    private String name;
+    private LocalDate maximum;
+    private LocalDate minimum;
+
 }

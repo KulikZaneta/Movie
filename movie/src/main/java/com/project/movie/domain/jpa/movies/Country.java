@@ -1,4 +1,4 @@
-package com.project.movie.domain.jpa;
+package com.project.movie.domain.jpa.movies;
 
 import lombok.*;
 

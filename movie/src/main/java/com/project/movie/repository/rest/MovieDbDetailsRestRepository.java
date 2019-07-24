@@ -1,9 +1,7 @@
 package com.project.movie.repository.rest;
 
 
-import com.project.movie.domain.rest.movies.KeywordRest;
-import com.project.movie.domain.rest.movies.MovieDetailsRest;
-import com.project.movie.domain.rest.movies.SocialMediaRest;
+import com.project.movie.domain.rest.movies.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -19,7 +17,6 @@ public class MovieDbDetailsRestRepository {
     @Value("${movie.api.key}")
     private String apiKey;
 
-    //movieDbRepository
     public MovieDetailsRest getMovieDetails(Long restMovieId) {
         return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "?" + apiKey + "&language=en-US"),MovieDetailsRest.class);
     }
@@ -30,5 +27,13 @@ public class MovieDbDetailsRestRepository {
 
     public KeywordRest getKeywords(Long restMovieId) {
         return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/keywords?" + apiKey),KeywordRest.class);
+    }
+
+    public RelaseDateRest getRelaseDate(Long restMovieId) {
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/release_dates?" + apiKey),RelaseDateRest.class);
+    }
+
+    public ReviewsRest getReviews(Long restMovieId) {
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/reviews?" + apiKey + "&language=en-US&page=1"),ReviewsRest.class);
     }
 }

@@ -1,4 +1,4 @@
-package com.project.movie.domain.rest.movies;
+package com.project.movie.domain.rest.movieLists;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

@@ -6,18 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.List;
-
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MovieUpcomingRest {
-    private Long page;
-    private List<ResultsUpcomingRest> results;
-    private DateUpcomingRest dates;
-    private Long total_pages;
-    private Long total_results;
+public class DetailsResultRest {
+    private String author;
+    private String content;
+    private Long id;
+    private String url;
 }

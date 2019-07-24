@@ -1,11 +1,8 @@
 package com.project.movie.service;
 
-import com.project.movie.domain.elastic.MovieDetailsCache;
-import com.project.movie.domain.jpa.MovieDetails;
-import com.project.movie.domain.rest.movies.KeywordRest;
-import com.project.movie.domain.rest.movies.MovieDetailsRest;
-import com.project.movie.domain.rest.movies.MovieUpcomingRest;
-import com.project.movie.domain.rest.movies.SocialMediaRest;
+import com.project.movie.domain.elastic.movies.MovieDetailsCache;
+import com.project.movie.domain.jpa.movies.MovieDetails;
+import com.project.movie.domain.rest.movies.*;
 import com.project.movie.mapper.MovieDetailsMapper;
 import com.project.movie.repository.elastic.MovieDetailsCacheRepository;
 import com.project.movie.repository.jpa.MovieDetailsRepository;
@@ -52,6 +49,14 @@ public class MovieDetailsService {
 
     public KeywordRest getKeywords(Long restMovieId) {
         return movieDbDetailsRestRepository.getKeywords(restMovieId);
+    }
+
+    public RelaseDateRest getRelaseDate(Long restMovieId) {
+        return movieDbDetailsRestRepository.getRelaseDate(restMovieId);
+    }
+
+    public ReviewsRest getReviews(Long movieRestId) {
+        return movieDbDetailsRestRepository.getReviews(movieRestId);
     }
 
 }

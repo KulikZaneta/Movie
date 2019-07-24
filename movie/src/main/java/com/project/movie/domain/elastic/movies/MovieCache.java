@@ -1,4 +1,4 @@
-package com.project.movie.domain.elastic;
+package com.project.movie.domain.elastic.movies;
 
 import lombok.*;
 import org.springframework.data.elasticsearch.annotations.Document;

@@ -1,7 +1,7 @@
 package com.project.movie.domain.rest.movieLists;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.project.movie.domain.rest.movieLists.MovieRest;
+import com.project.movie.domain.rest.movies.MovieRest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.project.movie.listener;
 
-import com.project.movie.domain.jpa.Movie;
+import com.project.movie.domain.jpa.movies.Movie;
 import com.project.movie.mapper.MovieMapper;
 import com.project.movie.repository.elastic.MovieCacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;

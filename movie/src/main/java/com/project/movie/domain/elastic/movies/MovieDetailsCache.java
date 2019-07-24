@@ -1,9 +1,9 @@
-package com.project.movie.domain.elastic;
+package com.project.movie.domain.elastic.movies;
 
-import com.project.movie.domain.jpa.Country;
-import com.project.movie.domain.jpa.Genre;
-import com.project.movie.domain.jpa.Language;
-import com.project.movie.domain.jpa.ProductionCompany;
+import com.project.movie.domain.jpa.movies.Country;
+import com.project.movie.domain.jpa.movies.Genre;
+import com.project.movie.domain.jpa.movies.Language;
+import com.project.movie.domain.jpa.movies.ProductionCompany;
 import lombok.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 

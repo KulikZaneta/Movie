@@ -6,20 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
+@Builder
 @Table
 @Entity
-public class MovieUpcoming {
+public class Language {
+    private String iso;
+    private String name;
     @Id
     @GeneratedValue
     private Long id;
-    private LocalDate maximum;
-    private LocalDate minimum;
-
 }

@@ -1,7 +1,7 @@
 package com.project.movie.mapper;
 
-import com.project.movie.domain.elastic.MovieDetailsCache;
-import com.project.movie.domain.jpa.*;
+import com.project.movie.domain.elastic.movies.MovieDetailsCache;
+import com.project.movie.domain.jpa.movies.*;
 import com.project.movie.domain.rest.movies.*;
 import org.springframework.stereotype.Component;
 
