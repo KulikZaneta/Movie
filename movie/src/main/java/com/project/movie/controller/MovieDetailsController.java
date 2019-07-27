@@ -40,6 +40,6 @@ public class MovieDetailsController {
 
     @GetMapping("/{id}")
     public MovieDetailsCache getMovieDetailsId(@PathVariable Long id) {
-        return movieDetailsService.getMovieDetails(id);
+        return movieDetailsService.getSaveMovieDetails(id);
     }
 }

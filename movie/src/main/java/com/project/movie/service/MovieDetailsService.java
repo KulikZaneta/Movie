@@ -27,7 +27,7 @@ public class MovieDetailsService {
     private MovieDetailsMapper movieDetailsMapper;
 
 
-    public MovieDetailsCache getMovieDetails(Long id) {
+    public MovieDetailsCache getSaveMovieDetails(Long id) {
         MovieDetailsCache movieCache = movieDetailsCacheRepository.findByRestMovieId(id);
         if (movieCache != null) {
             return movieCache;

@@ -14,6 +14,6 @@ import lombok.ToString;
 public class DetailsResultRest {
     private String author;
     private String content;
-    private Long id;
+    private String id;
     private String url;
 }
