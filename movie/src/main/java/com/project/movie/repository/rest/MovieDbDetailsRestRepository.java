@@ -14,7 +14,7 @@ public class MovieDbDetailsRestRepository {
     @Value("${url.movieDb}")
     private String movieDb;
 
-    @Value("${movie.api.key}")
+    @Value("${api.key.movie}")
     private String apiKey;
 
     public MovieDetailsRest getMovieDetails(Long restMovieId) {
@@ -22,18 +22,18 @@ public class MovieDbDetailsRestRepository {
     }
 
     public SocialMediaRest getSocialMedia(Long restMovieId) {
-        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/external_ids?" + apiKey),SocialMediaRest.class);
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/external_ids?api_key=" + apiKey),SocialMediaRest.class);
     }
 
     public KeywordRest getKeywords(Long restMovieId) {
-        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/keywords?" + apiKey),KeywordRest.class);
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/keywords?api_key=" + apiKey),KeywordRest.class);
     }
 
     public RelaseDateRest getRelaseDate(Long restMovieId) {
-        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/release_dates?" + apiKey),RelaseDateRest.class);
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/release_dates?api_key=" + apiKey),RelaseDateRest.class);
     }
 
     public ReviewsRest getReviews(Long restMovieId) {
-        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/reviews?" + apiKey + "&language=en-US&page=1"),ReviewsRest.class);
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "/reviews?api_key=" + apiKey + "&language=en-US&page=1"),ReviewsRest.class);
     }
 }

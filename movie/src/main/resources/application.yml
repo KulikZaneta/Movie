@@ -1,7 +1,7 @@
 #DATABASE CONFIGURATION
 spring:
   datasource:
-    url: jdbc:h2:file:~/exam2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:file:~/exam3;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password:
   jpa:
@@ -24,13 +24,9 @@ spring:
 
 url:
   movieDb: https://api.themoviedb.org/3
+  rapidapi: https://SwapistefanskliarovV1.p.rapidapi.com/
 
-
-movie:
-  api:
-    key: a5719ed0a0498b8e7389f828419d49b2
-
-logging:
-  level:
-    org.hibernate.jpa: DEBUG
-    org.hibernate.SQL: DEBUG
+api:
+  key:
+    movie: a5719ed0a0498b8e7389f828419d49b2
+    rapid: 37840f0c3emsh08017c4e4c6561dp16fa37jsn7fa6e0d4a859

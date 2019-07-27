@@ -1,6 +1,8 @@
 package com.project.movie.domain.jpa.movies;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -40,5 +42,8 @@ public class MovieDetails {
     private Long vote_average;
     @OneToOne(mappedBy = "movieDetails", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, optional = false)
     private Movie movie;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "movieDetails")
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<SocialMedia> socialMedia;
     private Long restMovieId;
 }

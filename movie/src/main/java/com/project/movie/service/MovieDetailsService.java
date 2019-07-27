@@ -55,8 +55,8 @@ public class MovieDetailsService {
         return movieDbDetailsRestRepository.getRelaseDate(restMovieId);
     }
 
-    public ReviewsRest getReviews(Long movieRestId) {
-        return movieDbDetailsRestRepository.getReviews(movieRestId);
+    public ReviewsRest getReviews(Long restMovieId) {
+        return movieDbDetailsRestRepository.getReviews(restMovieId);
     }
 
 }

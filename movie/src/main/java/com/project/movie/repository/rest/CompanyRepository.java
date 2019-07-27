@@ -11,7 +11,7 @@ public class CompanyRepository {
     @Value("${url.movieDb}")
     private String movieDb;
 
-    @Value("${movie.api.key}")
+    @Value("${api.key.movie}")
     private String apiKey;
 
     public CompanyDetailsRest getCompanyDetails(Long restCompanyId) {

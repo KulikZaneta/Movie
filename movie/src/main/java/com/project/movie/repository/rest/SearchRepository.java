@@ -15,7 +15,7 @@ public class SearchRepository {
     @Value("${url.movieDb}")
     private String movieDb;
 
-    @Value("${movie.api.key}")
+    @Value("${api.key.movie}")
     private String apiKey;
 
     public CollectionsRest getCollections() {

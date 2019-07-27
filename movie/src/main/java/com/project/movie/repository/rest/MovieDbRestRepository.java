@@ -14,7 +14,7 @@ public class MovieDbRestRepository {
     @Value("${url.movieDb}")
     private String movieDb;
 
-    @Value("${movie.api.key}")
+    @Value("${api.key.movie}")
     private String apiKey;
 
 

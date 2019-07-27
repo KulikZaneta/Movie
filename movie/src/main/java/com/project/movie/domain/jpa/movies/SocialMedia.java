@@ -2,10 +2,7 @@ package com.project.movie.domain.jpa.movies;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -22,4 +19,7 @@ public class SocialMedia {
     @Id
     @GeneratedValue
     private Long id;
+    @ManyToOne
+    @JoinColumn(name = "movieDetails_id")
+    private MovieDetails movieDetails;
 }
