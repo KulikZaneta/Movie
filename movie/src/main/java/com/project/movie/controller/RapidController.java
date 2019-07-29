@@ -1,5 +1,6 @@
 package com.project.movie.controller;
 
+import com.project.movie.domain.jpa.starWars.*;
 import com.project.movie.domain.rest.starWars.films.FilmResultRest;
 import com.project.movie.domain.rest.starWars.films.FilmsRest;
 import com.project.movie.domain.rest.starWars.peoples.PeopleResultRest;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/star-wars")
@@ -21,32 +24,32 @@ public class RapidController {
     private RapidService rapidService;
 
     @PostMapping("/films")
-    public FilmsRest<FilmResultRest> getFilms() {
+    public List<Films> getFilms() {
         return rapidService.getFilms();
     }
 
     @PostMapping("/peoples")
-    public FilmsRest<PeopleResultRest> getPeoples() {
+    public List<Peoples> getPeoples() {
         return rapidService.getPeoples();
     }
 
     @PostMapping("/planets")
-    public FilmsRest<PlanetResultRest> getPlanets() {
+    public List<Planets> getPlanets() {
         return rapidService.getPlanets();
     }
 
     @PostMapping("/species")
-    public FilmsRest<SpeciesResultRest> getSpecies() {
+    public List<Species> getSpecies() {
         return rapidService.getSpecies();
     }
 
     @PostMapping("/star-ships")
-    public FilmsRest<StarShipResultRest> getStarShips() {
+    public List<StarShips> getStarShips() {
         return rapidService.getStarShips();
     }
 
     @PostMapping("/vehicles")
-    public FilmsRest<VehicleResultRest> getVehicles() {
+    public List<Vehicles> getVehicles() {
         return rapidService.getVehicles();
     }
 

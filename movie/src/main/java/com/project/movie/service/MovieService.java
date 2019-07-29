@@ -7,7 +7,7 @@ import com.project.movie.domain.rest.movies.MovieRest;
 import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
 import com.project.movie.mapper.MovieMapper;
 import com.project.movie.repository.elastic.MovieCacheRepository;
-import com.project.movie.repository.jpa.MovieRepostitory;
+import com.project.movie.repository.jpa.movies.MovieRepostitory;
 import com.project.movie.repository.rest.MovieDbRestRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

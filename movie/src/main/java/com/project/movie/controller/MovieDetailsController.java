@@ -1,10 +1,8 @@
 package com.project.movie.controller;
 
 import com.project.movie.domain.elastic.movies.MovieDetailsCache;
-import com.project.movie.domain.rest.movies.KeywordRest;
-import com.project.movie.domain.rest.movies.RelaseDateRest;
-import com.project.movie.domain.rest.movies.ReviewsRest;
-import com.project.movie.domain.rest.movies.SocialMediaRest;
+import com.project.movie.domain.jpa.movies.SocialMedia;
+import com.project.movie.domain.rest.movies.*;
 import com.project.movie.service.MovieDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +17,7 @@ public class MovieDetailsController {
     private MovieDetailsService movieDetailsService;
 
     @GetMapping("/social-media/{restMovieId}")
-    public SocialMediaRest getSocialMedia(@PathVariable Long restMovieId) {
+    public SocialMedia getSocialMedia(@PathVariable Long restMovieId) {
         return movieDetailsService.getSocialMedia(restMovieId);
     }
 

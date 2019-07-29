@@ -2,12 +2,12 @@ package com.project.movie.service;
 
 import com.project.movie.domain.elastic.movies.MovieDetailsCache;
 import com.project.movie.domain.jpa.movies.MovieDetails;
+import com.project.movie.domain.jpa.movies.SocialMedia;
 import com.project.movie.domain.rest.movies.*;
 import com.project.movie.mapper.MovieDetailsMapper;
 import com.project.movie.repository.elastic.MovieDetailsCacheRepository;
-import com.project.movie.repository.jpa.MovieDetailsRepository;
+import com.project.movie.repository.jpa.movies.MovieDetailsRepository;
 import com.project.movie.repository.rest.MovieDbDetailsRestRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,6 +22,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 
@@ -82,21 +84,21 @@ public class MovieDetailsServiceTest {
     @Test
     public void shouldGetSocialMedia() {
         //Given
-        SocialMediaRest socialMediaRest = new SocialMediaRest();
+        SocialMedia socialMedia = new SocialMedia();
         //When
-        SocialMediaRest result = movieDetailsService.getSocialMedia(1L);
+        SocialMedia result = movieDetailsService.getSocialMedia(1L);
         //Then
-        assertEquals(socialMediaRest, result);
+        assertEquals(socialMedia, result);
     }
 
     @Test
     public void shouldEmptyGetSocialMedia() {
         //Given
-        SocialMediaRest socialMediaRest = null;
+        SocialMedia socialMedia = null;
         //When
-        SocialMediaRest result = movieDetailsService.getSocialMedia(2L);
+        SocialMedia result = movieDetailsService.getSocialMedia(2L);
         //Then
-        assertEquals(socialMediaRest, result);
+        assertEquals(socialMedia, result);
     }
 
     @Test
