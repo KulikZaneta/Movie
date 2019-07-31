@@ -2,10 +2,7 @@ package com.project.movie.domain.rest.movieLists;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.movie.domain.rest.movies.MovieRest;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ToString
+@Builder
 public class MovieListRest {
     private Integer item_count;
     private String name;

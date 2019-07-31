@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(AuthenticationController.class)
+@WebMvcTest(CompanyController.class)
 public class CompanyControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -31,6 +32,7 @@ public class CompanyControllerTest {
     @MockBean
     private CompanyService companyService;
 
+    //Done
     @Test
     public void getCompanyDetails() throws Exception {
         //Given
@@ -42,27 +44,36 @@ public class CompanyControllerTest {
                 "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
                 "Marvel Studios",
                 "US",
-                null
-
-        );
+                "test");
         when(companyService.getCompanyDetails(any())).thenReturn(companyDetailsRest);
-
-        Gson gson = new Gson();
-        String jsonContent = gson.toJson(companyDetailsRest);
 
         //When & Then
         mockMvc.perform(get("/company/details/420").content(String.valueOf(MediaType.APPLICATION_JSON))
-                .characterEncoding("UTF-8")
-                .content(jsonContent))
+                .characterEncoding("UTF-8"))
                 .andExpect(status().isOk());
-        //verify(companyService, times(1)).getCompanyDetails(anyLong());
-        System.out.println(companyDetailsRest);
-
+        verify(companyService, times(1)).getCompanyDetails(anyLong());
     }
 
+    //Done
     @Test
-    public void getOtherName() {
+    public void getOtherName() throws Exception {
         //Given
-        OtherNameCompanyRest otherNameCompanyRest = new OtherNameCompanyRest();
+        OtherNameCompanyRest otherNameCompanyRest =  OtherNameCompanyRest.builder()
+                .id(1L)
+                .result(NameResultRest.builder()
+                        .name("a")
+                        .type("b")
+                        .build())
+                .build();
+
+
+        when(companyService.getOtherName(1L)).thenReturn(otherNameCompanyRest);
+
+        //When&&Then
+        mockMvc.perform(get("/company/other-name/1").content(String.valueOf(MediaType.APPLICATION_JSON)))
+                .andExpect(status().isOk());
+        verify(companyService, times(1)).getOtherName(anyLong());
+        System.out.println(otherNameCompanyRest);
+
     }
 }

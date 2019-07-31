@@ -5,8 +5,10 @@ import com.project.movie.domain.jpa.movies.MovieDetails;
 import com.project.movie.domain.jpa.movies.SocialMedia;
 import com.project.movie.domain.rest.movies.*;
 import com.project.movie.mapper.MovieDetailsMapper;
+import com.project.movie.mapper.SocialMediaMapper;
 import com.project.movie.repository.elastic.MovieDetailsCacheRepository;
 import com.project.movie.repository.jpa.movies.MovieDetailsRepository;
+import com.project.movie.repository.jpa.movies.SocialMediaRepository;
 import com.project.movie.repository.rest.MovieDbDetailsRestRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +16,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -46,6 +49,12 @@ public class MovieDetailsServiceTest {
     @MockBean
     private MovieDetailsMapper movieDetailsMapper;
 
+    @MockBean
+    private SocialMediaRepository socialMediaRepository;
+
+    @MockBean
+    private SocialMediaMapper socialMediaMapper;
+
 
     @TestConfiguration
     static class MovieDetailsServiceTestContextConfiguration {
@@ -77,7 +86,12 @@ public class MovieDetailsServiceTest {
         Mockito.when(movieDetailsCacheRepository.findByRestMovieId(3L)).thenReturn(null);
         Mockito.when(movieDetailsMapper.mapToMovieDetailsCache(any(MovieDetails.class))).thenReturn(new MovieDetailsCache());
         Mockito.when(movieDetailsCacheRepository.save(any(MovieDetailsCache.class))).thenReturn(new MovieDetailsCache());
-
+        Mockito.when(socialMediaMapper.mapToSocialMedia(any(SocialMediaRest.class))).thenReturn(new SocialMedia());
+        Mockito.when(socialMediaRepository.save(any(SocialMedia.class))).thenReturn(new SocialMedia());
+        Mockito.when(movieDbDetailsRestRepository.getSocialMedia(2L)).thenReturn(new SocialMediaRest());
+        Mockito.when(movieDbDetailsRestRepository.getMovieDetails(3L)).thenReturn(new MovieDetailsRest());
+        Mockito.when(movieDetailsMapper.mapToMovieDetails(any(MovieDetailsRest.class))).thenReturn(new MovieDetails());
+        Mockito.when(movieDetailsRepository.save(any(MovieDetails.class))).thenReturn(new MovieDetails());
 
     }
 
@@ -86,7 +100,7 @@ public class MovieDetailsServiceTest {
         //Given
         SocialMedia socialMedia = new SocialMedia();
         //When
-        SocialMedia result = movieDetailsService.getSocialMedia(1L);
+        SocialMedia result = movieDetailsService.getSocialMedia(2L);
         //Then
         assertEquals(socialMedia, result);
     }
@@ -96,7 +110,7 @@ public class MovieDetailsServiceTest {
         //Given
         SocialMedia socialMedia = null;
         //When
-        SocialMedia result = movieDetailsService.getSocialMedia(2L);
+        SocialMedia result = movieDetailsService.getSocialMedia(4L);
         //Then
         assertEquals(socialMedia, result);
     }

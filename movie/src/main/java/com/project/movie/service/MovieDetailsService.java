@@ -62,8 +62,11 @@ public class MovieDetailsService {
                 SocialMedia socialMedia = socialMediaMapper.mapToSocialMedia(movieSocialMedia);
                 return socialMediaRepository.save(socialMedia);
             }
+        } else {
+            SocialMediaRest movieSocialMedia = movieDbDetailsRestRepository.getSocialMedia(restMovieId);
+            SocialMedia socialMedia = socialMediaMapper.mapToSocialMedia(movieSocialMedia);
+            return socialMediaRepository.save(socialMedia);
         }
-        return null;
     }
 
     public KeywordRest getKeywords(Long restMovieId) {

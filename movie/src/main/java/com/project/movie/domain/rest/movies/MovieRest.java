@@ -17,7 +17,7 @@ import java.util.List;
 @ToString
 public class MovieRest {
     private Double vote_average;
-    private Long id;
+    private String id;
     private Boolean video;
     private String media_type;
     private String title;

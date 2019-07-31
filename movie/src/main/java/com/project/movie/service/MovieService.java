@@ -34,8 +34,6 @@ public class MovieService {
     @Autowired
     private MovieCacheRepository movieCacheRepository;
 
-    @Autowired
-    private ApplicationEventPublisher applicationEventPublisher;
 
     public MovieListRest getList(String listId){
         MovieListRest movieList = movieDbRestRepository.getMovieList(listId);

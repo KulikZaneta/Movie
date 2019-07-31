@@ -9,6 +9,8 @@ import com.project.movie.domain.rest.starWars.species.SpeciesResultRest;
 import com.project.movie.domain.rest.starWars.starships.StarShipResultRest;
 import com.project.movie.domain.rest.starWars.vehicles.VehicleResultRest;
 import com.project.movie.service.RapidService;
+import com.project.movie.strategy.StarWars;
+import com.project.movie.strategy.StarWarsFactoryStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,34 +25,37 @@ public class RapidController {
     @Autowired
     private RapidService rapidService;
 
+    @Autowired
+    private StarWarsFactoryStrategy starWarsFactoryStrategy;
+
     @PostMapping("/films")
     public List<Films> getFilms() {
-        return rapidService.getFilms();
+        return (List<Films>) starWarsFactoryStrategy.getByEnum(StarWars.FILMS).get();
     }
 
     @PostMapping("/peoples")
     public List<Peoples> getPeoples() {
-        return rapidService.getPeoples();
+        return (List<Peoples>) starWarsFactoryStrategy.getByEnum(StarWars.PEOPLES).get();
     }
 
     @PostMapping("/planets")
     public List<Planets> getPlanets() {
-        return rapidService.getPlanets();
+        return (List<Planets>) starWarsFactoryStrategy.getByEnum(StarWars.PLANETS).get();
     }
 
     @PostMapping("/species")
     public List<Species> getSpecies() {
-        return rapidService.getSpecies();
+        return (List<Species>) starWarsFactoryStrategy.getByEnum(StarWars.SPECIES).get();
     }
 
     @PostMapping("/star-ships")
     public List<StarShips> getStarShips() {
-        return rapidService.getStarShips();
+        return (List<StarShips>) starWarsFactoryStrategy.getByEnum(StarWars.STARSHIPS).get();
     }
 
     @PostMapping("/vehicles")
     public List<Vehicles> getVehicles() {
-        return rapidService.getVehicles();
+        return (List<Vehicles>) starWarsFactoryStrategy.getByEnum(StarWars.VEHICLES).get();
     }
 
 

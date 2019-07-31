@@ -5,6 +5,9 @@ import com.project.movie.domain.rest.authentication.GuestSessionRest;
 import com.project.movie.domain.rest.authentication.TokenRest;
 import com.project.movie.domain.rest.movieLists.MovieListRest;
 import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
+import com.project.movie.mapper.MovieMapper;
+import com.project.movie.repository.elastic.MovieCacheRepository;
+import com.project.movie.repository.jpa.movies.MovieRepostitory;
 import com.project.movie.repository.rest.MovieDbRestRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +30,15 @@ public class MovieServiceTest {
 
     @MockBean
     private MovieDbRestRepository movieDbRestRepository;
+
+    @MockBean
+    private MovieRepostitory movieRepostitory;
+
+    @MockBean
+    private MovieMapper movieMapper;
+
+    @MockBean
+    private MovieCacheRepository movieCacheRepository;
 
     @TestConfiguration
     static class MovieServiceTestContextConfiguration {

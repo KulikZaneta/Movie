@@ -27,6 +27,7 @@ public class AuthenticationControllerTest {
     @MockBean
     private AuthenticationService authenticationService;
 
+    //Done
     @Test
     public void shouldGetCreateToken() throws Exception {
         //Given
@@ -46,10 +47,9 @@ public class AuthenticationControllerTest {
                 .content(jsonContent))
                 .andExpect(status().isOk());
         verify(authenticationService, times(1)).createSession();
-        System.out.println(guestSessionRest);
-
     }
 
+    //Done
     @Test
     public void shouldGetSession() throws Exception {
         //Given
@@ -69,6 +69,5 @@ public class AuthenticationControllerTest {
                 .content(jsonContent))
                 .andExpect(status().isOk());
         verify(authenticationService, times(1)).createToken();
-        System.out.println(tokenRest);
     }
 }

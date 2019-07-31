@@ -72,7 +72,15 @@ public class RapidServiceTest extends Exception {
 
     @Before
     public void setUp(){
-        FilmsRest<FilmResultRest> filmsRest = new FilmsRest<>();
+        FilmsRest<FilmResultRest> a = new FilmsRest<>();
+        FilmTo<FilmResultRest> b = new FilmTo<>();
+        List<FilmToRest<FilmResultRest>> c = new ArrayList<>();
+        FilmToRest films = new FilmToRest();
+        films.setResults(new ArrayList());
+        c.add(films);
+        b.setTo(c);
+        a.setContextWrites(b);
+
         FilmsRest<PeopleResultRest> peopleRest = new FilmsRest<>();
         FilmTo<PeopleResultRest> filmTo = new FilmTo<>();
         List<FilmToRest<PeopleResultRest>> filmToRests = new ArrayList<>();
@@ -122,7 +130,7 @@ public class RapidServiceTest extends Exception {
         //FilmsRest<SpeciesResultRest> speciesRest = new FilmsRest<>();
         //FilmsRest<StarShipResultRest> starShipRest = new FilmsRest<>();
         //FilmsRest<VehicleResultRest> vehicleRest = new FilmsRest<>();
-        Mockito.when(rapidRepository.getFilms()).thenReturn(filmsRest);
+        Mockito.when(rapidRepository.getFilms()).thenReturn(a);
         Mockito.when(rapidRepository.getPeoples()).thenReturn(peopleRest);
         Mockito.when(rapidRepository.getPlanets()).thenReturn(planetRest);
         Mockito.when(rapidRepository.getSpecies()).thenReturn(speciesRest);

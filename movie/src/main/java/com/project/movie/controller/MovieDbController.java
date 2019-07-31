@@ -28,7 +28,7 @@ public class MovieDbController {
         return movieService.getMovie(id);
     }*/
 
-    @GetMapping()
+    @GetMapping("/upcoming")
     public MovieUpcomingRest getMovieUpcoming() {
         return movieService.getMovieUpcoming();
     }

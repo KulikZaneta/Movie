@@ -22,7 +22,7 @@ public class MovieMapper {
        .originalLanguage(movieRest.getOriginal_language())
        .popularity(movieRest.getPopularity())
        .releaseDate(LocalDate.parse(movieRest.getRelease_date()))
-       .restId(movieRest.getId())
+       .restId(Long.valueOf(movieRest.getId()))
        .title(movieRest.getTitle())
        .build();
     }
