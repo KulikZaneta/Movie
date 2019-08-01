@@ -11,7 +11,6 @@ import com.project.movie.repository.jpa.movies.MovieRepostitory;
 import com.project.movie.repository.rest.MovieDbRestRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,17 +34,12 @@ public class MovieService {
     private MovieCacheRepository movieCacheRepository;
 
 
-    public MovieListRest getList(String listId){
+    public MovieListRest getList(String listId) {
         MovieListRest movieList = movieDbRestRepository.getMovieList(listId);
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(() -> saveIntoDb(movieList.getItems()));
         return movieList;
     }
-
-    /*public MovieCache getMovie(String id) {
-        return movieCacheRepository.findById(id).orElseThrow(null);
-    }*/
-
 
     @Transactional
     public void saveIntoDb(List<MovieRest> items) {
@@ -61,12 +55,10 @@ public class MovieService {
                             movieCacheRepository.save(movieMapper.mapToMovieCache(movieDb));
                         }
                     }
-        });
-
+                });
     }
 
     public MovieUpcomingRest getMovieUpcoming() {
         return movieDbRestRepository.getMovieUpcoming();
     }
-
 }

@@ -14,5 +14,4 @@ public class SocialMediaMapper {
                 .twitterId(socialMediaRest.getTwitter_id())
                 .build();
     }
-
 }

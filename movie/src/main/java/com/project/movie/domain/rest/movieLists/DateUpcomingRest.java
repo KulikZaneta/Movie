@@ -12,5 +12,4 @@ import lombok.ToString;
 public class DateUpcomingRest {
     private String maximum;
     private String minimum;
-
 }

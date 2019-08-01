@@ -14,6 +14,4 @@ import lombok.ToString;
 public class FilmsRest <T>{
     private String callback;
     private FilmTo <T> contextWrites;
-
-
 }

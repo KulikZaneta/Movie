@@ -4,7 +4,6 @@ import com.project.movie.domain.rest.movies.KeywordRest;
 import com.project.movie.domain.rest.search.CollectionsRest;
 import com.project.movie.domain.rest.search.CompaniesRest;
 import com.project.movie.repository.rest.SearchRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

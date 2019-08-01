@@ -55,7 +55,7 @@ public class MovieDetailsService {
     public SocialMedia getSocialMedia(Long restMovieId) {
         MovieDetails movieDetails = movieDetailsRepository.findByRestMovieId(restMovieId);
         if (movieDetails != null) {
-            if (movieDetails.getSocialMedia() != null && !movieDetails.getSocialMedia().isEmpty()){
+            if (movieDetails.getSocialMedia() != null && !movieDetails.getSocialMedia().isEmpty()) {
                 return movieDetails.getSocialMedia().get(0);
             } else {
                 SocialMediaRest movieSocialMedia = movieDbDetailsRestRepository.getSocialMedia(restMovieId);
@@ -80,5 +80,4 @@ public class MovieDetailsService {
     public ReviewsRest getReviews(Long restMovieId) {
         return movieDbDetailsRestRepository.getReviews(restMovieId);
     }
-
 }

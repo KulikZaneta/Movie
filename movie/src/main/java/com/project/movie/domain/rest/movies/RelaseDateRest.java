@@ -15,6 +15,4 @@ public class RelaseDateRest {
     private Long id;
     @Singular
     private List<MovieResultsRest> results;
-
-
 }

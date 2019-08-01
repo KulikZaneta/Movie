@@ -8,8 +8,6 @@ import lombok.ToString;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.Id;
-import java.time.LocalDate;
-
 
 @Data
 @NoArgsConstructor
@@ -21,5 +19,4 @@ public class MovieUpcomingCache {
     private String id;
     private String maximum;
     private String minimum;
-
 }

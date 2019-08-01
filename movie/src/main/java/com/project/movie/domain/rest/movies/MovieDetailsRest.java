@@ -39,6 +39,4 @@ public class MovieDetailsRest {
     private Boolean video;
     private Double vote_average;
     private Long vote_count;
-
-
 }

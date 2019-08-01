@@ -3,7 +3,6 @@ package com.project.movie.strategy.service;
 import com.project.movie.domain.jpa.starWars.Vehicles;
 import com.project.movie.domain.rest.starWars.vehicles.VehicleResultRest;
 import com.project.movie.mapper.RapidMapper;
-import com.project.movie.repository.jpa.starWars.StarWarsFilmsRepository;
 import com.project.movie.repository.jpa.starWars.VehiclesRepository;
 import com.project.movie.repository.rest.RapidRepository;
 import com.project.movie.strategy.StarWars;
@@ -40,4 +39,4 @@ public class VehicleService extends StarWarsStrategy {
                 .map(rapidMapper::mapToVehicles)
                 .collect(Collectors.toList()));
     }
-    }
+}

@@ -1,11 +1,8 @@
 package com.project.movie.controller;
 
-import com.google.gson.Gson;
 import com.project.movie.domain.elastic.movies.MovieDetailsCache;
-import com.project.movie.domain.jpa.movies.Movie;
 import com.project.movie.domain.jpa.movies.MovieDetails;
 import com.project.movie.domain.jpa.movies.SocialMedia;
-import com.project.movie.domain.jpa.starWars.Films;
 import com.project.movie.domain.rest.movies.*;
 import com.project.movie.mapper.MovieDetailsMapper;
 import com.project.movie.mapper.SocialMediaMapper;
@@ -14,7 +11,6 @@ import com.project.movie.repository.jpa.movies.MovieDetailsRepository;
 import com.project.movie.repository.jpa.movies.SocialMediaRepository;
 import com.project.movie.repository.rest.MovieDbDetailsRestRepository;
 import com.project.movie.service.MovieDetailsService;
-import com.project.movie.service.MovieService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +20,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -73,9 +64,8 @@ public class MovieDetailsControllerTest {
     when(movieDetailsService.getSocialMedia(anyLong())).thenReturn(socialMedia);
 
     //When & Then
-            mockMvc.perform(get("/movie-details/social-media/1").content(String.valueOf(MediaType.APPLICATION_JSON)))
-                //.characterEncoding("UTF-8")
-                //.content(jsonContent))
+            mockMvc.perform(get("/movie-details/social-media/1").content(String.valueOf(MediaType.APPLICATION_JSON))
+                .characterEncoding("UTF-8"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.imdbId", is("a")))
                 .andExpect(jsonPath("$.facebookId", is("b")))
@@ -84,11 +74,10 @@ public class MovieDetailsControllerTest {
                 .andExpect(jsonPath("$.id", is(1)));
 
         verify(movieDetailsService, times(1)).getSocialMedia(1L);
-        System.out.println(socialMedia);
 }
 
     @Test
-    public void getKeywords() throws Exception {
+    public void shouldGetKeywords() throws Exception {
         //Given
         KeywordRest keywordRest =  KeywordRest.builder()
                 .id(284053L)
@@ -99,13 +88,9 @@ public class MovieDetailsControllerTest {
                 .build();
         when(movieDetailsService.getKeywords(284053L)).thenReturn(keywordRest);
 
-        Gson gson = new Gson();
-        String jsonContent = gson.toJson(keywordRest);
-
         //When & Then
-        mockMvc.perform(get("/movie-details/keywords/284053").content(String.valueOf(MediaType.APPLICATION_JSON)))
-//                .characterEncoding("UTF-8")
-//                .content(jsonContent))
+        mockMvc.perform(get("/movie-details/keywords/284053").content(String.valueOf(MediaType.APPLICATION_JSON))
+                .characterEncoding("UTF-8"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(284053)));
         verify(movieDetailsService, times(1)).getKeywords(284053L);
@@ -113,7 +98,7 @@ public class MovieDetailsControllerTest {
     }
 
     @Test
-    public void getRelaseDate() throws Exception {
+    public void shouldGetRelaseDate() throws Exception {
         //Given
         RelaseDateRest relaseDateRest = RelaseDateRest.builder()
                 .id(284053L)
@@ -123,22 +108,16 @@ public class MovieDetailsControllerTest {
                 .build();
         when(movieDetailsService.getRelaseDate(284053L)).thenReturn(relaseDateRest);
 
-        Gson gson = new Gson();
-        String jsonContent = gson.toJson(relaseDateRest);
-
         //When & Then
         mockMvc.perform(get("/movie-details/relase-dates/284053").content(String.valueOf(MediaType.APPLICATION_JSON))
-                .characterEncoding("UTF-8")
-                .content(jsonContent))
+                .characterEncoding("UTF-8"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(284053)));
         verify(movieDetailsService, times(1)).getRelaseDate(284053L);
-        System.out.println(relaseDateRest);
-
     }
 
     @Test
-    public void getReviews() throws Exception {
+    public void shouldGetReviews() throws Exception {
         //Given
         ReviewsRest reviewsRest =  ReviewsRest.builder()
                 .id(284053L)
@@ -154,21 +133,16 @@ public class MovieDetailsControllerTest {
                 .build();
         when(movieDetailsService.getReviews(284053L)).thenReturn(reviewsRest);
 
-        Gson gson = new Gson();
-        String jsonContent = gson.toJson(reviewsRest);
-
         //When & Then
         mockMvc.perform(get("/movie-details/reviews/284053").content(String.valueOf(MediaType.APPLICATION_JSON))
-                .characterEncoding("UTF-8")
-                .content(jsonContent))
+                .characterEncoding("UTF-8"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(284053)));
         verify(movieDetailsService, times(1)).getReviews(284053L);
-        System.out.println(reviewsRest);
     }
 
     @Test
-    public void getMovieDetailsId() throws Exception {
+    public void shouldGetMovieDetailsId() throws Exception {
         //Given
         MovieDetailsCache movieDetailsCache = MovieDetailsCache.builder()
                 .adult(true)
@@ -185,9 +159,9 @@ public class MovieDetailsControllerTest {
 
         when(movieDetailsService.getSaveMovieDetails(4L)).thenReturn(movieDetailsCache);
 
-
         //When & Then
-        mockMvc.perform(get("/movie-details/4").content(String.valueOf(MediaType.APPLICATION_JSON)))
+        mockMvc.perform(get("/movie-details/4").content(String.valueOf(MediaType.APPLICATION_JSON))
+                .characterEncoding("UTF-8"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is("4")));
         verify(movieDetailsService, times(1)).getSaveMovieDetails(4L);

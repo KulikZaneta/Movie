@@ -14,5 +14,4 @@ import java.util.List;
 public class MovieResultsRest {
     private String iso_3166_1;
     private List<MovieDetailsDateRest> release_dates;
-
 }

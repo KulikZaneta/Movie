@@ -24,5 +24,4 @@ public class Films {
     @Id
     @GeneratedValue
     private Long id;
-
 }
