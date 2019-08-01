@@ -14,5 +14,4 @@ import lombok.ToString;
 public class GenresRest {
     private Long id;
     private String name;
-
 }

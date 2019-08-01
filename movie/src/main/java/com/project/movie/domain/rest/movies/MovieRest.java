@@ -1,13 +1,8 @@
 package com.project.movie.domain.rest.movies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -31,5 +26,4 @@ public class MovieRest {
     private String overview;
     private String release_date;
     private Integer vote_count;
-
 }

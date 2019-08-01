@@ -81,7 +81,4 @@ public class CompanyServiceTest {
         //Then
         assertEquals(otherNameCompanyRest,result);
     }
-
-
-
 }

@@ -4,7 +4,6 @@ import com.project.movie.domain.jpa.starWars.Species;
 import com.project.movie.domain.rest.starWars.species.SpeciesResultRest;
 import com.project.movie.mapper.RapidMapper;
 import com.project.movie.repository.jpa.starWars.SpeciesRepository;
-import com.project.movie.repository.jpa.starWars.StarWarsFilmsRepository;
 import com.project.movie.repository.rest.RapidRepository;
 import com.project.movie.strategy.StarWars;
 import com.project.movie.strategy.StarWarsStrategy;

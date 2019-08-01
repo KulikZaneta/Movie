@@ -3,7 +3,6 @@ package com.project.movie.service;
 import com.project.movie.domain.rest.authentication.GuestSessionRest;
 import com.project.movie.domain.rest.authentication.TokenRest;
 import com.project.movie.repository.rest.AuthenticationRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 

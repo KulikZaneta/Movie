@@ -21,5 +21,4 @@ public class MovieUpcoming {
     private Long id;
     private LocalDate maximum;
     private LocalDate minimum;
-
 }

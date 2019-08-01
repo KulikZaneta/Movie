@@ -1,8 +1,5 @@
 package com.project.movie.service;
 
-import com.project.movie.domain.jpa.movieLists.MovieUpcoming;
-import com.project.movie.domain.rest.authentication.GuestSessionRest;
-import com.project.movie.domain.rest.authentication.TokenRest;
 import com.project.movie.domain.rest.movieLists.MovieListRest;
 import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
 import com.project.movie.mapper.MovieMapper;
@@ -19,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -64,7 +62,7 @@ public class MovieServiceTest {
         //When
         MovieListRest result = movieService.getList("1");
         //Then
-        assertEquals(movieListRest,result);
+        assertEquals(movieListRest, result);
     }
 
     @Test
@@ -74,9 +72,6 @@ public class MovieServiceTest {
         //When
         MovieUpcomingRest result = movieService.getMovieUpcoming();
         //Then
-        assertEquals(movieUpcomingRest,result);
+        assertEquals(movieUpcomingRest, result);
     }
-
-
-
 }

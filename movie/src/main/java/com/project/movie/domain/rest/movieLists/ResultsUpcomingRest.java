@@ -28,5 +28,4 @@ public class ResultsUpcomingRest {
     private Double vote_count;
     private Boolean video;
     private Double vote_average;
-
 }

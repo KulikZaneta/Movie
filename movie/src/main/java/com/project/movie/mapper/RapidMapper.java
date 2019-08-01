@@ -9,7 +9,6 @@ import com.project.movie.domain.rest.starWars.starships.StarShipResultRest;
 import com.project.movie.domain.rest.starWars.vehicles.VehicleResultRest;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class RapidMapper {
     public Films mapToFilm(FilmResultRest filmResultRest) {
@@ -86,5 +85,4 @@ public class RapidMapper {
                 .url(vehicleResultRest.getUrl())
                 .build();
     }
-
 }

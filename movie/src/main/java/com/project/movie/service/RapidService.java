@@ -2,7 +2,6 @@ package com.project.movie.service;
 
 import com.project.movie.domain.jpa.starWars.*;
 import com.project.movie.domain.rest.starWars.films.FilmResultRest;
-import com.project.movie.domain.rest.starWars.films.FilmsRest;
 import com.project.movie.domain.rest.starWars.peoples.PeopleResultRest;
 import com.project.movie.domain.rest.starWars.plantes.PlanetResultRest;
 import com.project.movie.domain.rest.starWars.species.SpeciesResultRest;
@@ -34,7 +33,7 @@ public class RapidService {
     @Autowired
     private VehiclesRepository vehiclesRepository;
     @Autowired
-    private  StarWarsFilmsRepository starWarsFilmsRepository;
+    private StarWarsFilmsRepository starWarsFilmsRepository;
 
     @Autowired
     private RapidMapper rapidMapper;
@@ -108,5 +107,4 @@ public class RapidService {
                 .map(rapidMapper::mapToVehicles)
                 .collect(Collectors.toList()));
     }
-
 }

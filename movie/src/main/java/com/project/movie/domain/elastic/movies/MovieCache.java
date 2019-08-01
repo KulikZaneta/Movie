@@ -2,10 +2,8 @@ package com.project.movie.domain.elastic.movies;
 
 import lombok.*;
 import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
 
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 @Data
 @Builder

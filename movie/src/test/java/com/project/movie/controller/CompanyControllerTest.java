@@ -1,7 +1,5 @@
 package com.project.movie.controller;
 
-import com.google.gson.Gson;
-import com.project.movie.domain.rest.authentication.GuestSessionRest;
 import com.project.movie.domain.rest.company.CompanyDetailsRest;
 import com.project.movie.domain.rest.company.NameResultRest;
 import com.project.movie.domain.rest.company.OtherNameCompanyRest;
@@ -15,12 +13,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -32,12 +28,11 @@ public class CompanyControllerTest {
     @MockBean
     private CompanyService companyService;
 
-    //Done
     @Test
-    public void getCompanyDetails() throws Exception {
+    public void shouldGetCompanyDetails() throws Exception {
         //Given
         CompanyDetailsRest companyDetailsRest = new CompanyDetailsRest(
-                "Marvel Cinematic Universe ",
+                "Marvel Cinematic Universe",
                 "Burbank, California, USA",
                 "http://www.marvel.com",
                 420L,
@@ -50,30 +45,34 @@ public class CompanyControllerTest {
         //When & Then
         mockMvc.perform(get("/company/details/420").content(String.valueOf(MediaType.APPLICATION_JSON))
                 .characterEncoding("UTF-8"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.description", is("Marvel Cinematic Universe")))
+                .andExpect(jsonPath("$.headquarters", is("Burbank, California, USA")))
+                .andExpect(jsonPath("$.homepage", is("http://www.marvel.com")))
+                .andExpect(jsonPath("$.id", is(420)))
+                .andExpect(jsonPath("$.logo_path", is("/hUzeosd33nzE5MCNsZxCGEKTXaQ.png")))
+                .andExpect(jsonPath("$.name", is("Marvel Studios")))
+                .andExpect(jsonPath("$.origin_country", is("US")))
+                .andExpect(jsonPath("$.parent_company", is("test")));
         verify(companyService, times(1)).getCompanyDetails(anyLong());
     }
 
-    //Done
     @Test
-    public void getOtherName() throws Exception {
+    public void shouldGetOtherName() throws Exception {
         //Given
-        OtherNameCompanyRest otherNameCompanyRest =  OtherNameCompanyRest.builder()
+        OtherNameCompanyRest otherNameCompanyRest = OtherNameCompanyRest.builder()
                 .id(1L)
                 .result(NameResultRest.builder()
-                        .name("a")
-                        .type("b")
+                        .name("testName")
+                        .type("testType")
                         .build())
                 .build();
-
-
         when(companyService.getOtherName(1L)).thenReturn(otherNameCompanyRest);
 
         //When&&Then
-        mockMvc.perform(get("/company/other-name/1").content(String.valueOf(MediaType.APPLICATION_JSON)))
+        mockMvc.perform(get("/company/other-name/1").content(String.valueOf(MediaType.APPLICATION_JSON))
+                .characterEncoding("UTF-8"))
                 .andExpect(status().isOk());
         verify(companyService, times(1)).getOtherName(anyLong());
-        System.out.println(otherNameCompanyRest);
-
     }
 }

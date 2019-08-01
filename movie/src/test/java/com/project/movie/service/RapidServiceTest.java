@@ -1,6 +1,5 @@
 package com.project.movie.service;
 
-import com.project.movie.domain.jpa.movies.Movie;
 import com.project.movie.domain.jpa.starWars.*;
 import com.project.movie.domain.rest.starWars.films.FilmResultRest;
 import com.project.movie.domain.rest.starWars.films.FilmTo;
@@ -14,13 +13,11 @@ import com.project.movie.domain.rest.starWars.vehicles.VehicleResultRest;
 import com.project.movie.mapper.RapidMapper;
 import com.project.movie.repository.jpa.starWars.*;
 import com.project.movie.repository.rest.RapidRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -72,32 +69,32 @@ public class RapidServiceTest extends Exception {
 
     @Before
     public void setUp(){
-        FilmsRest<FilmResultRest> a = new FilmsRest<>();
-        FilmTo<FilmResultRest> b = new FilmTo<>();
-        List<FilmToRest<FilmResultRest>> c = new ArrayList<>();
+        FilmsRest<FilmResultRest> filmsRest = new FilmsRest<>();
+        FilmTo<FilmResultRest> toFilms = new FilmTo<>();
+        List<FilmToRest<FilmResultRest>> listFilm = new ArrayList<>();
         FilmToRest films = new FilmToRest();
         films.setResults(new ArrayList());
-        c.add(films);
-        b.setTo(c);
-        a.setContextWrites(b);
+        listFilm.add(films);
+        toFilms.setTo(listFilm);
+        filmsRest.setContextWrites(toFilms);
 
         FilmsRest<PeopleResultRest> peopleRest = new FilmsRest<>();
-        FilmTo<PeopleResultRest> filmTo = new FilmTo<>();
-        List<FilmToRest<PeopleResultRest>> filmToRests = new ArrayList<>();
-        FilmToRest film = new FilmToRest();
-        film.setResults(new ArrayList());
-        filmToRests.add(film);
-        filmTo.setTo(filmToRests);
-        peopleRest.setContextWrites(filmTo);
+        FilmTo<PeopleResultRest> toPeople = new FilmTo<>();
+        List<FilmToRest<PeopleResultRest>> listPeople = new ArrayList<>();
+        FilmToRest people = new FilmToRest();
+        people.setResults(new ArrayList());
+        listPeople.add(people);
+        toPeople.setTo(listPeople);
+        peopleRest.setContextWrites(toPeople);
 
         FilmsRest<PlanetResultRest> planetRest = new FilmsRest<>();
-        FilmTo<PlanetResultRest> to = new FilmTo<>();
-        List<FilmToRest<PlanetResultRest>> rests = new ArrayList<>();
-        FilmToRest film1 = new FilmToRest();
-        film1.setResults(new ArrayList());
-        rests.add(film1);
-        to.setTo(rests);
-        planetRest.setContextWrites(to);
+        FilmTo<PlanetResultRest> toPlanet = new FilmTo<>();
+        List<FilmToRest<PlanetResultRest>> listPlanet = new ArrayList<>();
+        FilmToRest planet = new FilmToRest();
+        planet.setResults(new ArrayList());
+        listPlanet.add(planet);
+        toPlanet.setTo(listPlanet);
+        planetRest.setContextWrites(toPlanet);
 
         FilmsRest<SpeciesResultRest> speciesRest = new FilmsRest<>();
         FilmTo<SpeciesResultRest> toSpecies = new FilmTo<>();
@@ -126,11 +123,7 @@ public class RapidServiceTest extends Exception {
         toVehicle.setTo(listVehicle);
         vehicleRest.setContextWrites(toVehicle);
 
-        //FilmsRest<PlanetResultRest> planetRest = new FilmsRest<>();
-        //FilmsRest<SpeciesResultRest> speciesRest = new FilmsRest<>();
-        //FilmsRest<StarShipResultRest> starShipRest = new FilmsRest<>();
-        //FilmsRest<VehicleResultRest> vehicleRest = new FilmsRest<>();
-        Mockito.when(rapidRepository.getFilms()).thenReturn(a);
+        Mockito.when(rapidRepository.getFilms()).thenReturn(filmsRest);
         Mockito.when(rapidRepository.getPeoples()).thenReturn(peopleRest);
         Mockito.when(rapidRepository.getPlanets()).thenReturn(planetRest);
         Mockito.when(rapidRepository.getSpecies()).thenReturn(speciesRest);
@@ -142,7 +135,6 @@ public class RapidServiceTest extends Exception {
         Mockito.when(starShipsRepository.findAll()).thenReturn(new ArrayList<>());
         Mockito.when(starWarsFilmsRepository.findAll()).thenReturn(new ArrayList<>());
         Mockito.when(speciesRepository.findAll()).thenReturn(new ArrayList<>());
-
     }
 
     @Test
@@ -204,6 +196,4 @@ public class RapidServiceTest extends Exception {
         //Then
         assertEquals(vehicleRest,result);
     }
-
-
 }

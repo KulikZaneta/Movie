@@ -12,5 +12,4 @@ public class BelongToCollectionRest {
     private String name;
     private String poster_path;
     private String backdrop_path;
-
 }

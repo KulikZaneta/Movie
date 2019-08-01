@@ -1,15 +1,9 @@
 package com.project.movie.controller;
 
-import com.google.gson.Gson;
 import com.project.movie.domain.jpa.starWars.*;
-import com.project.movie.domain.rest.search.CompaniesRest;
-import com.project.movie.domain.rest.starWars.films.FilmResultRest;
-import com.project.movie.domain.rest.starWars.films.FilmsRest;
-import com.project.movie.domain.rest.starWars.peoples.PeopleResultRest;
-import com.project.movie.domain.rest.starWars.plantes.PlanetResultRest;
-import com.project.movie.domain.rest.starWars.species.SpeciesResultRest;
-import com.project.movie.domain.rest.starWars.starships.StarShipResultRest;
-import com.project.movie.domain.rest.starWars.vehicles.VehicleResultRest;
+import com.project.movie.mapper.RapidMapper;
+import com.project.movie.repository.jpa.starWars.*;
+import com.project.movie.repository.rest.RapidRepository;
 import com.project.movie.service.RapidService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +13,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.http.MediaType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +20,12 @@ import java.util.List;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
+//Testy dla poprzedniej wersji controllera - do poprawy dla wzorcowego
 @RunWith(SpringRunner.class)
 @WebMvcTest(RapidController.class)
 public class RapidControllerTest {
@@ -41,12 +35,34 @@ public class RapidControllerTest {
     @MockBean
     private RapidService rapidService;
 
-    //Done
+    @MockBean
+    private PeoplesRepository peoplesRepository;
+
+    @MockBean
+    private PlanetsRepoitory planetsRepoitory;
+
+    @MockBean
+    private SpeciesRepository speciesRepository;
+
+    @MockBean
+    private StarShipsRepository starShipsRepository;
+
+    @MockBean
+    private VehiclesRepository vehiclesRepository;
+
+    @MockBean
+    private  StarWarsFilmsRepository starWarsFilmsRepository;
+
+    @MockBean
+    private RapidMapper rapidMapper;
+
+    @MockBean
+    private RapidRepository rapidRepository;
+
     @Test
     public void shouldEmptyGetFilms() throws Exception {
         //Given
-        List<Films> filmsRest = new ArrayList<>(
-        );
+        List<Films> filmsRest = new ArrayList<>();
         when(rapidService.getFilms()).thenReturn(filmsRest);
 
         //When & Then
@@ -54,10 +70,8 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$", hasSize(0)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getFilms();
-        System.out.println(filmsRest);
     }
 
-    //Done
     @Test
     public void shouldGetFilms() throws Exception {
         //Given
@@ -80,10 +94,8 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].id", is(2)));
 
         verify(rapidService, times(1)).getFilms();
-        //System.out.println(filmsRest);
     }
 
-    //Done
     @Test
     public void shouldEmptyGetPeoples() throws Exception {
         //Given
@@ -94,10 +106,8 @@ public class RapidControllerTest {
         mockMvc.perform(post("/star-wars/peoples").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getPeoples();
-        System.out.println(peopleRest);
     }
 
-    //Done
     @Test
     public void shouldGetPeoples() throws Exception {
         //Given
@@ -120,10 +130,8 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getPeoples();
-        System.out.println(peopleRest);
     }
 
-    //Done
     @Test
     public void shouldEmptyGetPlanets() throws Exception {
         //Given
@@ -135,10 +143,8 @@ public class RapidControllerTest {
         mockMvc.perform(post("/star-wars/planets").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getPlanets();
-        System.out.println(planetRest);
     }
 
-    //Done
     @Test
     public void shouldGetPlanets() throws Exception {
         //Given
@@ -159,10 +165,8 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getPlanets();
-        System.out.println(planetRest);
     }
 
-    //Done
     @Test
     public void shouldEmptyGetSpecies() throws Exception {
         //Given
@@ -174,10 +178,9 @@ public class RapidControllerTest {
         mockMvc.perform(post("/star-wars/species").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getSpecies();
-        System.out.println(speciesRest);
     }
 
-    //Done
+
     @Test
     public void shouldGetSpecies() throws Exception {
         //Given
@@ -199,10 +202,8 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getSpecies();
-        System.out.println(speciesRest);
     }
 
-    //Done
     @Test
     public void shouldEmptyGetStarShips() throws Exception {
         //Given
@@ -214,10 +215,8 @@ public class RapidControllerTest {
         mockMvc.perform(post("/star-wars/star-ships").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getStarShips();
-        System.out.println(starShipRest);
     }
 
-    //Done
     @Test
     public void shouldGetStarShips() throws Exception {
         //Given
@@ -239,10 +238,8 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getStarShips();
-        System.out.println(starShipRest);
     }
 
-    //Done
     @Test
     public void shouldEmptyGetVehicles() throws Exception {
         //Given
@@ -254,11 +251,8 @@ public class RapidControllerTest {
         mockMvc.perform(post("/star-wars/vehicles").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getVehicles();
-        System.out.println(vehicleRest);
     }
 
-
-    //Done
     @Test
     public void shouldGetVehicles() throws Exception {
         //Given
@@ -279,6 +273,5 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
         verify(rapidService, times(1)).getVehicles();
-        System.out.println(vehicleRest);
     }
 }
