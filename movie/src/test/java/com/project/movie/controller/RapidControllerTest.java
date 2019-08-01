@@ -5,6 +5,9 @@ import com.project.movie.mapper.RapidMapper;
 import com.project.movie.repository.jpa.starWars.*;
 import com.project.movie.repository.rest.RapidRepository;
 import com.project.movie.service.RapidService;
+import com.project.movie.strategy.StarWars;
+import com.project.movie.strategy.StarWarsFactoryStrategy;
+import com.project.movie.strategy.service.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,43 +36,40 @@ public class RapidControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private RapidService rapidService;
+    private StarWarsFactoryStrategy starWarsFactoryStrategy;
 
     @MockBean
-    private PeoplesRepository peoplesRepository;
+    private FilmsService filmsService;
 
     @MockBean
-    private PlanetsRepoitory planetsRepoitory;
+    private PeoplesService peoplesService;
 
     @MockBean
-    private SpeciesRepository speciesRepository;
+    private SpeciesService speciesService;
 
     @MockBean
-    private StarShipsRepository starShipsRepository;
+    private StarShipsService starShipsService;
 
     @MockBean
-    private VehiclesRepository vehiclesRepository;
+    private VehicleService vehicleService;
 
     @MockBean
-    private  StarWarsFilmsRepository starWarsFilmsRepository;
+    private PlanetsService planetsService;
 
-    @MockBean
-    private RapidMapper rapidMapper;
 
-    @MockBean
-    private RapidRepository rapidRepository;
 
     @Test
     public void shouldEmptyGetFilms() throws Exception {
         //Given
         List<Films> filmsRest = new ArrayList<>();
-        when(rapidService.getFilms()).thenReturn(filmsRest);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.FILMS)).thenReturn(filmsService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.FILMS).get()).thenReturn(filmsRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/films").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(jsonPath("$", hasSize(0)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getFilms();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.FILMS);
     }
 
     @Test
@@ -77,7 +77,8 @@ public class RapidControllerTest {
         //Given
         List<Films> filmsRest = new ArrayList<>();
         filmsRest.add(new Films("a", 1L, "b", "c", "d", "e", 2L));
-        when(rapidService.getFilms()).thenReturn(filmsRest);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.FILMS)).thenReturn(filmsService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.FILMS).get()).thenReturn(filmsRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/films").content(String.valueOf(MediaType.APPLICATION_JSON)))
@@ -93,27 +94,29 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].url", is("e")))
                 .andExpect(jsonPath("$[0].id", is(2)));
 
-        verify(rapidService, times(1)).getFilms();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.FILMS);
     }
 
     @Test
     public void shouldEmptyGetPeoples() throws Exception {
         //Given
         List<Peoples> peopleRest = new ArrayList<>();
-        when(rapidService.getPeoples()).thenReturn(peopleRest);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.PEOPLES)).thenReturn(peoplesService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.PEOPLES).get()).thenReturn(peopleRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/peoples").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getPeoples();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.PEOPLES);
     }
 
     @Test
     public void shouldGetPeoples() throws Exception {
         //Given
         List<Peoples> peopleRest = new ArrayList<>();
+        when(starWarsFactoryStrategy.getByEnum(StarWars.PEOPLES)).thenReturn(peoplesService);
         peopleRest.add(new Peoples("a", "b", "c", "d", "e", "f", "g", "h", "i", 1L));
-        when(rapidService.getPeoples()).thenReturn(peopleRest);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.PEOPLES).get()).thenReturn(peopleRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/peoples").content(String.valueOf(MediaType.APPLICATION_JSON)))
@@ -129,20 +132,20 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].url", is("i")))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getPeoples();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.PEOPLES);
     }
 
     @Test
     public void shouldEmptyGetPlanets() throws Exception {
         //Given
-        List<Planets> planetRest = new ArrayList<>(
-        );
-        when(rapidService.getPlanets()).thenReturn(planetRest);
+        List<Planets> planetRest = new ArrayList<>();
+        when(starWarsFactoryStrategy.getByEnum(StarWars.PLANETS)).thenReturn(planetsService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.PLANETS).get()).thenReturn(planetRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/planets").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getPlanets();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.PLANETS);
     }
 
     @Test
@@ -150,7 +153,8 @@ public class RapidControllerTest {
         //Given
         List<Planets> planetRest = new ArrayList<>();
         planetRest.add(new Planets("a", "b", "c", "d", "e", "f", "g", 1L));
-        when(rapidService.getPlanets()).thenReturn(planetRest);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.PLANETS)).thenReturn(planetsService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.PLANETS).get()).thenReturn(planetRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/planets").content(String.valueOf(MediaType.APPLICATION_JSON)))
@@ -164,20 +168,20 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].url", is("g")))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getPlanets();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.PLANETS);
     }
 
     @Test
     public void shouldEmptyGetSpecies() throws Exception {
         //Given
-        List<Species> speciesRest = new ArrayList<>(
-        );
-        when(rapidService.getSpecies()).thenReturn(speciesRest);
+        List<Species> speciesRest = new ArrayList<>();
+        when(starWarsFactoryStrategy.getByEnum(StarWars.SPECIES)).thenReturn(speciesService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.SPECIES).get()).thenReturn(speciesRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/species").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getSpecies();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.SPECIES);
     }
 
 
@@ -186,7 +190,8 @@ public class RapidControllerTest {
         //Given
         List<Species> speciesRest = new ArrayList<>();
         speciesRest.add(new Species("a", "b", "c", "d", "e", "f", "g", "h", 1L));
-        when(rapidService.getSpecies()).thenReturn(speciesRest);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.SPECIES)).thenReturn(speciesService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.SPECIES).get()).thenReturn(speciesRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/species").content(String.valueOf(MediaType.APPLICATION_JSON)))
@@ -201,20 +206,20 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].url", is("h")))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getSpecies();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.SPECIES);
     }
 
     @Test
     public void shouldEmptyGetStarShips() throws Exception {
         //Given
-        List<StarShips> starShipRest = new ArrayList<>(
-        );
-        when(rapidService.getStarShips()).thenReturn(starShipRest);
+        List<StarShips> starShipRest = new ArrayList<>();
+        when(starWarsFactoryStrategy.getByEnum(StarWars.STARSHIPS)).thenReturn(starShipsService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.STARSHIPS).get()).thenReturn(starShipRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/star-ships").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getStarShips();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.STARSHIPS);
     }
 
     @Test
@@ -222,7 +227,8 @@ public class RapidControllerTest {
         //Given
         List<StarShips> starShipRest = new ArrayList<>();
         starShipRest.add(new StarShips("a", "b", "c", "d", "e", "f", "g", "h", 1L));
-        when(rapidService.getStarShips()).thenReturn(starShipRest);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.STARSHIPS)).thenReturn(starShipsService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.STARSHIPS).get()).thenReturn(starShipRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/star-ships").content(String.valueOf(MediaType.APPLICATION_JSON)))
@@ -237,20 +243,20 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].url", is("h")))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getStarShips();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.STARSHIPS);
     }
 
     @Test
     public void shouldEmptyGetVehicles() throws Exception {
         //Given
-        List<Vehicles> vehicleRest = new ArrayList<>(
-        );
-        when(rapidService.getVehicles()).thenReturn(vehicleRest);
+        List<Vehicles> vehicleRest = new ArrayList<>();
+        when(starWarsFactoryStrategy.getByEnum(StarWars.VEHICLES)).thenReturn(vehicleService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.VEHICLES).get()).thenReturn(vehicleRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/vehicles").content(String.valueOf(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getVehicles();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.VEHICLES);
     }
 
     @Test
@@ -258,7 +264,8 @@ public class RapidControllerTest {
         //Given
         List<Vehicles> vehicleRest = new ArrayList<>();
         vehicleRest.add(new Vehicles("a", "b", "c", "d", "e", "f", "g", 1L));
-        when(rapidService.getVehicles()).thenReturn(vehicleRest);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.VEHICLES)).thenReturn(vehicleService);
+        when(starWarsFactoryStrategy.getByEnum(StarWars.VEHICLES).get()).thenReturn(vehicleRest);
 
         //When & Then
         mockMvc.perform(post("/star-wars/vehicles").content(String.valueOf(MediaType.APPLICATION_JSON)))
@@ -272,6 +279,6 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].url", is("g")))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
-        verify(rapidService, times(1)).getVehicles();
+        verify(starWarsFactoryStrategy, times(2)).getByEnum(StarWars.VEHICLES);
     }
 }

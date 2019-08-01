@@ -15,10 +15,10 @@ public class CompanyRepository {
     private String apiKey;
 
     public CompanyDetailsRest getCompanyDetails(Long restCompanyId) {
-        return new RestTemplate().getForObject(movieDb.concat("/company/" + restCompanyId + "?" + apiKey),CompanyDetailsRest.class);
+        return new RestTemplate().getForObject(movieDb.concat("/company/" + restCompanyId + "?api_key=" + apiKey),CompanyDetailsRest.class);
     }
 
     public OtherNameCompanyRest getOtherName(Long restCompanyId) {
-        return new RestTemplate().getForObject(movieDb.concat("/company/" + restCompanyId + "/alternative_names?" + apiKey),OtherNameCompanyRest.class);
+        return new RestTemplate().getForObject(movieDb.concat("/company/" + restCompanyId + "/alternative_names?api_key=" + apiKey),OtherNameCompanyRest.class);
     }
 }

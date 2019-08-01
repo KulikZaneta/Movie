@@ -14,8 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/star-wars")
 public class RapidController {
-    @Autowired
-    private RapidService rapidService;
 
     @Autowired
     private StarWarsFactoryStrategy starWarsFactoryStrategy;

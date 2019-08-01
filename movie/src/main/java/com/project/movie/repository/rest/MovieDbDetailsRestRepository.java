@@ -17,7 +17,7 @@ public class MovieDbDetailsRestRepository {
     private String apiKey;
 
     public MovieDetailsRest getMovieDetails(Long restMovieId) {
-        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "?" + apiKey + "&language=en-US"),MovieDetailsRest.class);
+        return new RestTemplate().getForObject(movieDb.concat("/movie/" + restMovieId + "?api_key=" + apiKey + "&language=en-US"),MovieDetailsRest.class);
     }
 
     public SocialMediaRest getSocialMedia(Long restMovieId) {
