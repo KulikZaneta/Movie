@@ -103,7 +103,7 @@ public class MovieDetailsControllerTest {
         RelaseDateRest relaseDateRest = RelaseDateRest.builder()
                 .id(284053L)
                 .result(MovieResultsRest.builder()
-                        .iso_3166_1("a")
+                        .iso("a")
                 .build())
                 .build();
         when(movieDetailsService.getRelaseDate(284053L)).thenReturn(relaseDateRest);
@@ -122,8 +122,8 @@ public class MovieDetailsControllerTest {
         ReviewsRest reviewsRest =  ReviewsRest.builder()
                 .id(284053L)
                 .page("1")
-                .total_pages(1L)
-                .total_results(1L)
+                .totalPages(1L)
+                .totalResults(1L)
                 .result(DetailsResultRest.builder()
                         .author("a")
                         .content("b")
@@ -146,14 +146,14 @@ public class MovieDetailsControllerTest {
         //Given
         MovieDetailsCache movieDetailsCache = MovieDetailsCache.builder()
                 .adult(true)
-                .original_language("a")
-                .original_title("b")
+                .originalLanguage("a")
+                .originalTitle("b")
                 .popularity(3.0)
-                .release_date("d")
+                .releaseDate("d")
                 .restMovieId(1L)
                 .runtime(1.0)
                 .title("e")
-                .vote_average(3L)
+                .voteAverage(3L)
                 .id("4")
                 .build();
 

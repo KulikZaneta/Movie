@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.movies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;
@@ -11,19 +12,28 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ToString
 public class MovieRest {
-    private Double vote_average;
+    @JsonProperty("vote_average")
+    private Double voteAverage;
     private String id;
     private Boolean video;
-    private String media_type;
+    @JsonProperty("media_type")
+    private String mediaType;
     private String title;
     private Double popularity;
-    private String poster_path;
-    private String original_language;
-    private String original_title;
-    private List<Integer> genre_ids;
-    private String backdrop_path;
+    @JsonProperty("poster_path")
+    private String posterPath;
+    @JsonProperty("original_language")
+    private String originalLanguage;
+    @JsonProperty("original_title")
+    private String originalTitle;
+    @JsonProperty("genre_ids")
+    private List<Integer> genreIds;
+    @JsonProperty("backdrop_path")
+    private String backdropPath;
     private Boolean adult;
     private String overview;
-    private String release_date;
-    private Integer vote_count;
+    @JsonProperty("release_date")
+    private String releaseDate;
+    @JsonProperty("vote_count")
+    private Integer voteCount;
 }

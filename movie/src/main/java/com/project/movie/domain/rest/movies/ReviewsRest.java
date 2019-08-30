@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.movies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public class ReviewsRest {
     private String page;
     @Singular
     private List<DetailsResultRest> results;
-    private Long total_pages;
-    private Long total_results;
+    @JsonProperty("total_pages")
+    private Long totalPages;
+    @JsonProperty("total_results")
+    private Long totalResults;
 }

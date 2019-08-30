@@ -21,15 +21,15 @@ public class MovieDetailsCache {
     private List<Genre> genres;
     @Id
     private String id;
-    private String original_language;
-    private String original_title;
+    private String originalLanguage;
+    private String originalTitle;
     private Double popularity;
     private List<ProductionCompany> productionCompanyRests;
     private List<Country> productionCountryRests;
-    private String release_date;
+    private String releaseDate;
     private Double runtime;
     private List<Language> spokenLanguageRests;
     private String title;
-    private Long vote_average;
+    private Long voteAverage;
     private Long restMovieId;
 }

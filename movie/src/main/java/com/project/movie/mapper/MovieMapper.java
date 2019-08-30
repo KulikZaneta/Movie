@@ -19,9 +19,9 @@ public class MovieMapper {
 
     public Movie mapToMovie(MovieRest movieRest) {
        return Movie.builder()
-       .originalLanguage(movieRest.getOriginal_language())
+       .originalLanguage(movieRest.getOriginalLanguage())
        .popularity(movieRest.getPopularity())
-       .releaseDate(LocalDate.parse(movieRest.getRelease_date()))
+       .releaseDate(LocalDate.parse(movieRest.getReleaseDate()))
        .restId(Long.valueOf(movieRest.getId()))
        .title(movieRest.getTitle())
        .build();

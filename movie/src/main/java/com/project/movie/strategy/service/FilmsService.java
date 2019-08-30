@@ -1,12 +1,13 @@
 package com.project.movie.strategy.service;
 
-import com.project.movie.domain.jpa.starWars.Films;
-import com.project.movie.domain.rest.starWars.films.FilmResultRest;
+import com.project.movie.domain.jpa.star.wars.Films;
+import com.project.movie.domain.rest.star.wars.films.FilmResultRest;
 import com.project.movie.mapper.RapidMapper;
-import com.project.movie.repository.jpa.starWars.StarWarsFilmsRepository;
+import com.project.movie.repository.jpa.star.wars.StarWarsFilmsRepository;
 import com.project.movie.repository.rest.RapidRepository;
 import com.project.movie.strategy.StarWars;
 import com.project.movie.strategy.StarWarsStrategy;
+import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class FilmsService extends StarWarsStrategy {
+@EqualsAndHashCode
+public class FilmsService extends StarWarsStrategy<Films> {
     @Autowired
     private RapidRepository rapidRepository;
 
@@ -24,12 +26,12 @@ public class FilmsService extends StarWarsStrategy {
     @Autowired
     private RapidMapper rapidMapper;
 
-    protected FilmsService() {
+    public FilmsService() {
         super(StarWars.FILMS);
     }
 
     @Override
-    public Object get() {
+    public List<Films> get() {
         List< FilmResultRest > filmsRest = rapidRepository.getFilms().getContextWrites().getTo().get(0).getResults();
         List<Films> findStarWars = starWarsFilmsRepository.findAll();
         if (filmsRest.size() == findStarWars.size()) {

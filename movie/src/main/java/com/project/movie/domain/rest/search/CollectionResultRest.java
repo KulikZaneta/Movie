@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.search;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,15 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CollectionResultRest {
     private Boolean adult;
-    private String backdrop_path;
+    @JsonProperty("backdrop_path")
+    private String backdropPath;
     private Long id;
     private String name;
-    private String original_language;
-    private String original_name;
+    @JsonProperty("original_language")
+    private String originalLanguage;
+    @JsonProperty("original_name")
+    private String originalName;
     private String overview;
-    private String poster_path;
+    @JsonProperty("poster_path")
+    private String posterPath;
 }

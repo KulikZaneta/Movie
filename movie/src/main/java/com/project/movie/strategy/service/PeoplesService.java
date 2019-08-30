@@ -1,12 +1,13 @@
 package com.project.movie.strategy.service;
 
-import com.project.movie.domain.jpa.starWars.Peoples;
-import com.project.movie.domain.rest.starWars.peoples.PeopleResultRest;
+import com.project.movie.domain.jpa.star.wars.Peoples;
+import com.project.movie.domain.rest.star.wars.peoples.PeopleResultRest;
 import com.project.movie.mapper.RapidMapper;
-import com.project.movie.repository.jpa.starWars.PeoplesRepository;
+import com.project.movie.repository.jpa.star.wars.PeoplesRepository;
 import com.project.movie.repository.rest.RapidRepository;
 import com.project.movie.strategy.StarWars;
 import com.project.movie.strategy.StarWarsStrategy;
+import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PeoplesService extends StarWarsStrategy {
+@EqualsAndHashCode
+public class PeoplesService extends StarWarsStrategy<Peoples> {
     @Autowired
     private RapidRepository rapidRepository;
 
@@ -29,7 +31,7 @@ public class PeoplesService extends StarWarsStrategy {
     }
 
     @Override
-    public Object get() {
+    public List<Peoples> get() {
         List<PeopleResultRest> peopleRest = rapidRepository.getPeoples().getContextWrites().getTo().get(0).getResults();
         List<Peoples> findPeoples = peoplesRepository.findAll();
         if (peopleRest.size() == findPeoples.size()) {

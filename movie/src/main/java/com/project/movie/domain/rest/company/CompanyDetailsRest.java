@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.company;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +17,11 @@ public class CompanyDetailsRest {
     private String headquarters;
     private String homepage;
     private Long id;
-    private String logo_path;
+    @JsonProperty("logo_path")
+    private String logoPath;
     private String name;
-    private String origin_country;
-    private String parent_company;
+    @JsonProperty("origin_country")
+    private String originCountry;
+    @JsonProperty("parent_company")
+    private String parentCompany;
 }

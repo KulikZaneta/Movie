@@ -17,6 +17,6 @@ public class ProductionCompanyCache {
     @Id
     @GeneratedValue
     private String id;
-    private String logo_path;
-    private String origin_country;
+    private String logoPath;
+    private String originCountry;
 }

@@ -1,7 +1,7 @@
 package com.project.movie.controller;
 
-import com.project.movie.domain.rest.movieLists.MovieListRest;
-import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
+import com.project.movie.domain.rest.movie.lists.MovieListRest;
+import com.project.movie.domain.rest.movie.lists.MovieUpcomingRest;
 import com.project.movie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

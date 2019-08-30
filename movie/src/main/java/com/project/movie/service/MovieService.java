@@ -2,9 +2,9 @@ package com.project.movie.service;
 
 import com.project.movie.domain.elastic.movies.MovieCache;
 import com.project.movie.domain.jpa.movies.Movie;
-import com.project.movie.domain.rest.movieLists.MovieListRest;
+import com.project.movie.domain.rest.movie.lists.MovieListRest;
 import com.project.movie.domain.rest.movies.MovieRest;
-import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
+import com.project.movie.domain.rest.movie.lists.MovieUpcomingRest;
 import com.project.movie.mapper.MovieMapper;
 import com.project.movie.repository.elastic.MovieCacheRepository;
 import com.project.movie.repository.jpa.movies.MovieRepostitory;
@@ -33,7 +33,7 @@ public class MovieService {
     @Autowired
     private MovieCacheRepository movieCacheRepository;
 
-
+    @Transactional
     public MovieListRest getList(String listId) {
         MovieListRest movieList = movieDbRestRepository.getMovieList(listId);
         ExecutorService executor = Executors.newSingleThreadExecutor();

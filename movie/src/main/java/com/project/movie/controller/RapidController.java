@@ -1,7 +1,6 @@
 package com.project.movie.controller;
 
-import com.project.movie.domain.jpa.starWars.*;
-import com.project.movie.service.RapidService;
+import com.project.movie.domain.jpa.star.wars.*;
 import com.project.movie.strategy.StarWars;
 import com.project.movie.strategy.StarWarsFactoryStrategy;
 import org.springframework.beans.factory.annotation.Autowired;

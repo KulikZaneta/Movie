@@ -1,12 +1,12 @@
 package com.project.movie.mapper;
 
-import com.project.movie.domain.jpa.starWars.*;
-import com.project.movie.domain.rest.starWars.films.FilmResultRest;
-import com.project.movie.domain.rest.starWars.peoples.PeopleResultRest;
-import com.project.movie.domain.rest.starWars.plantes.PlanetResultRest;
-import com.project.movie.domain.rest.starWars.species.SpeciesResultRest;
-import com.project.movie.domain.rest.starWars.starships.StarShipResultRest;
-import com.project.movie.domain.rest.starWars.vehicles.VehicleResultRest;
+import com.project.movie.domain.jpa.star.wars.*;
+import com.project.movie.domain.rest.star.wars.films.FilmResultRest;
+import com.project.movie.domain.rest.star.wars.peoples.PeopleResultRest;
+import com.project.movie.domain.rest.star.wars.plantes.PlanetResultRest;
+import com.project.movie.domain.rest.star.wars.species.SpeciesResultRest;
+import com.project.movie.domain.rest.star.wars.starships.StarShipResultRest;
+import com.project.movie.domain.rest.star.wars.vehicles.VehicleResultRest;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,9 +14,9 @@ public class RapidMapper {
     public Films mapToFilm(FilmResultRest filmResultRest) {
         return Films.builder()
                 .director(filmResultRest.getDirector())
-                .episodeId(filmResultRest.getEpisode_id())
+                .episodeId(filmResultRest.getEpisodeId())
                 .producer(filmResultRest.getProducer())
-                .releaseDate(filmResultRest.getRelease_date())
+                .releaseDate(filmResultRest.getReleaseDate())
                 .title(filmResultRest.getTitle())
                 .url(filmResultRest.getUrl())
                 .build();
@@ -24,27 +24,27 @@ public class RapidMapper {
 
     public Peoples mapToPeople(PeopleResultRest peopleResultRest) {
         return Peoples.builder()
-                .birthYear(peopleResultRest.getBirth_year())
-                .eyeColor(peopleResultRest.getEye_color())
+                .birthYear(peopleResultRest.getBirthYear())
+                .eyeColor(peopleResultRest.getEyeColor())
                 .gender(peopleResultRest.getGender())
-                .hairColor(peopleResultRest.getHair_color())
+                .hairColor(peopleResultRest.getHairColor())
                 .height(peopleResultRest.getHeight())
                 .homeworld(peopleResultRest.getHomeworld())
                 .name(peopleResultRest.getName())
-                .skinColor(peopleResultRest.getSkin_color())
+                .skinColor(peopleResultRest.getSkinColor())
                 .url(peopleResultRest.getUrl())
                 .build();
     }
 
     public Species mapToSpecies(SpeciesResultRest speciesResultRest) {
         return Species.builder()
-                .averageHeight(speciesResultRest.getAverage_height())
-                .eyeColors(speciesResultRest.getEye_colors())
-                .hairColors(speciesResultRest.getHair_colors())
+                .averageHeight(speciesResultRest.getAverageHeight())
+                .eyeColors(speciesResultRest.getEyeColors())
+                .hairColors(speciesResultRest.getHairColors())
                 .homeworld(speciesResultRest.getHomeworld())
                 .language(speciesResultRest.getLanguage())
                 .name(speciesResultRest.getName())
-                .skinColors(speciesResultRest.getSkin_colors())
+                .skinColors(speciesResultRest.getSkinColors())
                 .url(speciesResultRest.getUrl())
                 .build();
     }
@@ -55,7 +55,7 @@ public class RapidMapper {
                 .gravity(planetResultRest.getGravity())
                 .name(planetResultRest.getName())
                 .population(planetResultRest.getPopulation())
-                .surfaceWater(planetResultRest.getSurface_water())
+                .surfaceWater(planetResultRest.getSurfaceWater())
                 .terrain(planetResultRest.getTerrain())
                 .url(planetResultRest.getUrl())
                 .build();
@@ -63,13 +63,13 @@ public class RapidMapper {
 
     public StarShips mapToStarShips(StarShipResultRest starShipResultRest) {
         return StarShips.builder()
-                .cargo_capacity(starShipResultRest.getCargo_capacity())
+                .cargoCapacity(starShipResultRest.getCargoCapacity())
                 .crew(starShipResultRest.getCrew())
                 .manufacturer(starShipResultRest.getManufacturer())
                 .model(starShipResultRest.getModel())
                 .passengers(starShipResultRest.getPassengers())
                 .name(starShipResultRest.getName())
-                .starship_class(starShipResultRest.getStarship_class())
+                .starshipClass(starShipResultRest.getStarshipClass())
                 .url(starShipResultRest.getUrl())
                 .build();
     }
@@ -81,7 +81,7 @@ public class RapidMapper {
                 .model(vehicleResultRest.getModel())
                 .name(vehicleResultRest.getName())
                 .passengers(vehicleResultRest.getPassengers())
-                .vehicle_class(vehicleResultRest.getVehicle_class())
+                .vehicleClass(vehicleResultRest.getVehicleClass())
                 .url(vehicleResultRest.getUrl())
                 .build();
     }

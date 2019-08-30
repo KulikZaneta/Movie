@@ -1,7 +1,7 @@
 package com.project.movie.repository.rest;
 
-import com.project.movie.domain.rest.movieLists.MovieListRest;
-import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
+import com.project.movie.domain.rest.movie.lists.MovieListRest;
+import com.project.movie.domain.rest.movie.lists.MovieUpcomingRest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;

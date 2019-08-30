@@ -1,7 +1,7 @@
 package com.project.movie.service;
 
-import com.project.movie.domain.rest.movieLists.MovieListRest;
-import com.project.movie.domain.rest.movieLists.MovieUpcomingRest;
+import com.project.movie.domain.rest.movie.lists.MovieListRest;
+import com.project.movie.domain.rest.movie.lists.MovieUpcomingRest;
 import com.project.movie.mapper.MovieMapper;
 import com.project.movie.repository.elastic.MovieCacheRepository;
 import com.project.movie.repository.jpa.movies.MovieRepostitory;

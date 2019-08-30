@@ -24,8 +24,8 @@ public class MovieDetails {
     @Id
     @GeneratedValue
     private Long id;
-    private String original_language;
-    private String original_title;
+    private String originalLanguage;
+    private String originalTitle;
     private Double popularity;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "movie_company", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "company_id"))
@@ -33,13 +33,13 @@ public class MovieDetails {
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "movie_countries", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "countries_id"))
     private List<Country> productionCountryRests = new LinkedList<>();
-    private LocalDate release_date;
+    private LocalDate releaseDate;
     private Double runtime;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "movie_spoken", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "spoken_id"))
     private List<Language> spokenLanguageRests = new LinkedList<>();
     private String title;
-    private Long vote_average;
+    private Long voteAverage;
     @OneToOne(mappedBy = "movieDetails", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, optional = false)
     private Movie movie;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "movieDetails")

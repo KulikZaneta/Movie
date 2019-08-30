@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class SocialMediaMapper {
     public SocialMedia mapToSocialMedia(SocialMediaRest socialMediaRest) {
         return SocialMedia.builder()
-                .facebookId(socialMediaRest.getFacebook_id())
-                .imdbId(socialMediaRest.getImdb_id())
-                .instagramId(socialMediaRest.getInstagram_id())
-                .twitterId(socialMediaRest.getTwitter_id())
+                .facebookId(socialMediaRest.getFacebookId())
+                .imdbId(socialMediaRest.getImdbId())
+                .instagramId(socialMediaRest.getInstagramId())
+                .twitterId(socialMediaRest.getTwitterId())
                 .build();
     }
 }

@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.search;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,8 @@ import java.util.List;
 public class KeywordsRest {
     private Long page;
     private List<KeywordResultsRest> results;
-    private Long total_pages;
-    private Long total_results;
+    @JsonProperty("total_pages")
+    private Long totalPages;
+    @JsonProperty("total_results")
+    private Long totalResults;
 }

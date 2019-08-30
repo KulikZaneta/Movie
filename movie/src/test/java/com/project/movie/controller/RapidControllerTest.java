@@ -1,10 +1,6 @@
 package com.project.movie.controller;
 
-import com.project.movie.domain.jpa.starWars.*;
-import com.project.movie.mapper.RapidMapper;
-import com.project.movie.repository.jpa.starWars.*;
-import com.project.movie.repository.rest.RapidRepository;
-import com.project.movie.service.RapidService;
+import com.project.movie.domain.jpa.star.wars.*;
 import com.project.movie.strategy.StarWars;
 import com.project.movie.strategy.StarWarsFactoryStrategy;
 import com.project.movie.strategy.service.*;
@@ -27,8 +23,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
-//Testy dla poprzedniej wersji controllera - do poprawy dla wzorcowego
 @RunWith(SpringRunner.class)
 @WebMvcTest(RapidController.class)
 public class RapidControllerTest {
@@ -238,8 +232,8 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].manufacturer", is("c")))
                 .andExpect(jsonPath("$[0].crew", is("d")))
                 .andExpect(jsonPath("$[0].passengers", is("e")))
-                .andExpect(jsonPath("$[0].cargo_capacity", is("f")))
-                .andExpect(jsonPath("$[0].starship_class", is("g")))
+                .andExpect(jsonPath("$[0].cargoCapacity", is("f")))
+                .andExpect(jsonPath("$[0].starshipClass", is("g")))
                 .andExpect(jsonPath("$[0].url", is("h")))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());
@@ -275,7 +269,7 @@ public class RapidControllerTest {
                 .andExpect(jsonPath("$[0].length", is("c")))
                 .andExpect(jsonPath("$[0].crew", is("d")))
                 .andExpect(jsonPath("$[0].passengers", is("e")))
-                .andExpect(jsonPath("$[0].vehicle_class", is("f")))
+                .andExpect(jsonPath("$[0].vehicleClass", is("f")))
                 .andExpect(jsonPath("$[0].url", is("g")))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(status().isOk());

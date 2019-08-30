@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.movies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 public class MovieResultsRest {
-    private String iso_3166_1;
-    private List<MovieDetailsDateRest> release_dates;
+    @JsonProperty("iso_3166_1")
+    private String iso;
+    @JsonProperty("release_dates")
+    private List<MovieDetailsDateRest> releaseDates;
 }

@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.search;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CompanyResultsRest {
     private Long id;
-    private String logo_path;
+    @JsonProperty("logo_path")
+    private String logoPath;
     private String name;
 }

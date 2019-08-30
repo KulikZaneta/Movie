@@ -1,12 +1,13 @@
 package com.project.movie.strategy.service;
 
-import com.project.movie.domain.jpa.starWars.Vehicles;
-import com.project.movie.domain.rest.starWars.vehicles.VehicleResultRest;
+import com.project.movie.domain.jpa.star.wars.Vehicles;
+import com.project.movie.domain.rest.star.wars.vehicles.VehicleResultRest;
 import com.project.movie.mapper.RapidMapper;
-import com.project.movie.repository.jpa.starWars.VehiclesRepository;
+import com.project.movie.repository.jpa.star.wars.VehiclesRepository;
 import com.project.movie.repository.rest.RapidRepository;
 import com.project.movie.strategy.StarWars;
 import com.project.movie.strategy.StarWarsStrategy;
+import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class VehicleService extends StarWarsStrategy {
+@EqualsAndHashCode
+public class VehicleService extends StarWarsStrategy<Vehicles> {
     @Autowired
     private RapidRepository rapidRepository;
 
@@ -29,7 +31,7 @@ public class VehicleService extends StarWarsStrategy {
     }
 
     @Override
-    public Object get() {
+    public List<Vehicles> get() {
         List<VehicleResultRest> vehiclesRest = rapidRepository.getVehicles().getContextWrites().getTo().get(0).getResults();
         List<Vehicles> findVehicles = vehiclesRepository.findAll();
         if (vehiclesRest.size() == findVehicles.size()) {

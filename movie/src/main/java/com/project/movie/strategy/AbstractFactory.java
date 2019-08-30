@@ -14,7 +14,7 @@ public abstract class AbstractFactory<S, E> {
 
     private Map<E, S> serviceMap = new HashMap<>();
 
-    @PostConstruct
+    @PostConstruct//wywoluje sie po konstruktorze
     public void init() {
         serviceMap = services.stream()
                 .collect(Collectors.toMap(this::getKey, x -> x));

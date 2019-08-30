@@ -16,17 +16,17 @@ public class MovieDetailsMapper {
         return MovieDetailsCache.builder()
                 .adult(movieDetails.getAdult())
                 .genres(movieDetails.getGenres())
-                .original_language(movieDetails.getOriginal_language())
-                .original_title(movieDetails.getOriginal_title())
+                .originalLanguage(movieDetails.getOriginalLanguage())
+                .originalTitle(movieDetails.getOriginalTitle())
                 .popularity(movieDetails.getPopularity())
                 .productionCompanyRests(movieDetails.getProductionCompanyRests())
                 .productionCountryRests(movieDetails.getProductionCountryRests())
-                .release_date(String.valueOf(movieDetails.getRelease_date()))
+                .releaseDate(String.valueOf(movieDetails.getReleaseDate()))
                 .restMovieId(movieDetails.getRestMovieId())
                 .runtime(movieDetails.getRuntime())
                 .spokenLanguageRests(movieDetails.getSpokenLanguageRests())
                 .title(movieDetails.getTitle())
-                .vote_average(movieDetails.getVote_average())
+                .voteAverage(movieDetails.getVoteAverage())
                 .build();
     }
 
@@ -34,15 +34,15 @@ public class MovieDetailsMapper {
         return MovieDetails.builder()
                 .adult(movieDetailsRest.getAdult())
                 .genres(mapToListGenre(movieDetailsRest.getGenres()))
-                .original_language(movieDetailsRest.getOriginal_language())
-                .original_title(movieDetailsRest.getOriginal_title())
+                .originalLanguage(movieDetailsRest.getOriginalLanguage())
+                .originalTitle(movieDetailsRest.getOriginalTitle())
                 .popularity(movieDetailsRest.getPopularity())
                 .productionCompanyRests(mapToListProductionCompany(movieDetailsRest.getProductionCompanyRests()))
                 .productionCountryRests(mapToListCountry(movieDetailsRest.getProductionCountryRests()))
-                .release_date(LocalDate.parse(movieDetailsRest.getRelease_date()))
+                .releaseDate(LocalDate.parse(movieDetailsRest.getReleaseDate()))
                 .runtime(movieDetailsRest.getRuntime())
                 .spokenLanguageRests(mapToListLanguage(movieDetailsRest.getSpokenLanguageRests()))
-                .vote_average(movieDetailsRest.getVote_count())
+                .voteAverage(movieDetailsRest.getVoteCount())
                 .restMovieId(movieDetailsRest.getId())
                 .build();
     }
@@ -71,9 +71,9 @@ public class MovieDetailsMapper {
 
     public ProductionCompany mapToProductionCompany(ProductionCompaniesRest productionCompaniesRest) {
         return ProductionCompany.builder()
-                .logo_path(productionCompaniesRest.getLogo_path())
+                .logoPath(productionCompaniesRest.getLogoPath())
                 .name(productionCompaniesRest.getName())
-                .origin_country(productionCompaniesRest.getOrigin_country())
+                .originCountry(productionCompaniesRest.getOriginCountry())
                 .build();
     }
 
@@ -88,7 +88,7 @@ public class MovieDetailsMapper {
 
     public Country mapToCountry(ProductionCountriesRest productionCountriesRest) {
         return Country.builder()
-                .iso(productionCountriesRest.getIso_3166_1())
+                .iso(productionCountriesRest.getIso())
                 .name(productionCountriesRest.getName())
                 .build();
 
@@ -105,7 +105,7 @@ public class MovieDetailsMapper {
 
     public Language mapToLanguage(SpokenLanguageRest spokenLanguageRest) {
         return Language.builder()
-                .iso(spokenLanguageRest.getIso_639_1())
+                .iso(spokenLanguageRest.getIso())
                 .name(spokenLanguageRest.getName())
                 .build();
     }

@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.movies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Data
@@ -9,6 +10,7 @@ import lombok.*;
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductionCountriesRest {
-    private String iso_3166_1;
+    @JsonProperty("iso_3166_1")
+    private String iso;
     private String name;
 }

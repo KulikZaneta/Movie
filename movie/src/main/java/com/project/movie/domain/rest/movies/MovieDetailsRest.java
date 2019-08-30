@@ -1,6 +1,7 @@
 package com.project.movie.domain.rest.movies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,21 +16,28 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MovieDetailsRest {
     private Boolean adult;
-    private String backdrop_path;
-    private BelongToCollectionRest belongs_to_collection;
+    @JsonProperty("backdrop_path")
+    private String backdropPath;
+    @JsonProperty("belongs_to_collection")
+    private BelongToCollectionRest belongsToCollection;
     private Integer budget;
     private List<GenresRest> genres;
     private String homepage;
     private Long id;
-    private String imdb_id;
-    private String original_language;
-    private String original_title;
+    @JsonProperty("imdb_id")
+    private String imdbId;
+    @JsonProperty("original_language")
+    private String originalLanguage;
+    @JsonProperty("original_title")
+    private String originalTitle;
     private String overview;
     private Double popularity;
-    private String poster_path;
+    @JsonProperty("poster_path")
+    private String posterPath;
     private List<ProductionCompaniesRest> productionCompanyRests;
     private List<ProductionCountriesRest> productionCountryRests;
-    private String release_date;
+    @JsonProperty("release_date")
+    private String releaseDate;
     private Double revenue;
     private Double runtime;
     private List<SpokenLanguageRest> spokenLanguageRests;
@@ -37,6 +45,8 @@ public class MovieDetailsRest {
     private String tagline;
     private String title;
     private Boolean video;
-    private Double vote_average;
-    private Long vote_count;
+    @JsonProperty("vote_average")
+    private Double voteAverage;
+    @JsonProperty("vote_count")
+    private Long voteCount;
 }

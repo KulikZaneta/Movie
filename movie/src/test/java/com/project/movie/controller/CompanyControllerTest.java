@@ -50,10 +50,10 @@ public class CompanyControllerTest {
                 .andExpect(jsonPath("$.headquarters", is("Burbank, California, USA")))
                 .andExpect(jsonPath("$.homepage", is("http://www.marvel.com")))
                 .andExpect(jsonPath("$.id", is(420)))
-                .andExpect(jsonPath("$.logo_path", is("/hUzeosd33nzE5MCNsZxCGEKTXaQ.png")))
+                .andExpect(jsonPath("$.logoPath", is("/hUzeosd33nzE5MCNsZxCGEKTXaQ.png")))
                 .andExpect(jsonPath("$.name", is("Marvel Studios")))
-                .andExpect(jsonPath("$.origin_country", is("US")))
-                .andExpect(jsonPath("$.parent_company", is("test")));
+                .andExpect(jsonPath("$.originCountry", is("US")))
+                .andExpect(jsonPath("$.parentCompany", is("test")));
         verify(companyService, times(1)).getCompanyDetails(anyLong());
     }
 

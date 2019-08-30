@@ -19,6 +19,6 @@ public class ProductionCompany {
     @Id
     @GeneratedValue
     private Long id;
-    private String logo_path;
-    private String origin_country;
+    private String logoPath;
+    private String originCountry;
 }

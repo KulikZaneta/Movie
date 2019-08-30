@@ -47,8 +47,8 @@ public class SearchControllerTest {
         //Given
         CollectionsRest collectionsRest =  CollectionsRest.builder()
                 .page(1L)
-                .total_pages(2L)
-                .total_results(3L)
+                .totalPages(2L)
+                .totalResults(3L)
                 .build();
         when(searchService.searchCollections()).thenReturn(collectionsRest);
 
@@ -57,8 +57,8 @@ public class SearchControllerTest {
                 .characterEncoding("UTF-8"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.page", is(1)))
-                .andExpect(jsonPath("$.total_pages", is(2)))
-                .andExpect(jsonPath("$.total_results", is(3)));
+                .andExpect(jsonPath("$.totalPages", is(2)))
+                .andExpect(jsonPath("$.totalResults", is(3)));
         verify(searchService, times(1)).searchCollections();
         System.out.println(collectionsRest);
     }
@@ -81,8 +81,8 @@ public class SearchControllerTest {
         //Given
         CompaniesRest companiesRest =  CompaniesRest.builder()
                 .page(1L)
-                .total_pages(2L)
-                .total_results(3L)
+                .totalPages(2L)
+                .totalResults(3L)
                 .build();
         when(searchService.searchCompanies()).thenReturn(companiesRest);
 
@@ -90,8 +90,8 @@ public class SearchControllerTest {
         mockMvc.perform(get("/search/companies").content(String.valueOf(MediaType.APPLICATION_JSON))
                 .characterEncoding("UTF-8"))
                 .andExpect(jsonPath("$.page", is(1)))
-                .andExpect(jsonPath("$.total_pages", is(2)))
-                .andExpect(jsonPath("$.total_results", is(3)))
+                .andExpect(jsonPath("$.totalPages", is(2)))
+                .andExpect(jsonPath("$.totalResults", is(3)))
                 .andExpect(status().isOk());
         verify(searchService, times(1)).searchCompanies();
     }
