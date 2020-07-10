@@ -2,7 +2,7 @@
 Movie application
 
 ## General info
-Application allows to read details about movies contained in database.
+Application allows to read details about movies contained in external API.
 Project under reconstruction.
 
 ## Technologies
